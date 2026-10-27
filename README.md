@@ -11,6 +11,12 @@
 
 Developed by **Giovanni Antonecchia** (*Music Engineering, Politecnico di Milano*).
 
+> [!NOTE]
+> **Proprietary Neural Retrieval Engine & Evaluation Access**  
+> SoundScout's core neural indexing pipeline, segment-level timestamp pooling algorithms, and reverse audio search engines are protected intellectual property.  
+> 
+> Full source code access for institutional evaluation, academic collaboration, or recruitment review is available upon request by contacting [Giovanni Antonecchia](mailto:gio.antonecchia961@gmail.com).
+
 ---
 
 ## 📸 Visual Showcase & Interface
