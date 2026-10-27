@@ -181,7 +181,7 @@ with col_d:
 tab_search, tab_shortlist = st.tabs(["🔍 Search Sounds", f"⭐ Session Shortlist ({len(shortlist)})"])
 
 with tab_search:
-    col_input, col_btn = st.columns([4.2, 1])
+    col_input, col_btn = st.columns([4.2, 1], vertical_alignment="bottom")
     with col_input:
         query_input = st.text_input(
             "Describe the sound you want",
@@ -190,8 +190,6 @@ with tab_search:
             help="CLAP works best with concise descriptive prompts. English queries are a useful starting point.",
         )
     with col_btn:
-        st.write("")
-        st.write("")
         st.button("Search sounds", type="primary", use_container_width=True)
 
     active_query = query_input.strip()
