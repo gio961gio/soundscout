@@ -9,6 +9,7 @@ SoundScout indexes audio files on your computer and lets you search them with de
 ## What works in SoundScout
 
 - **Semantic Text-to-Audio Retrieval:** powered by CLAP (`laion/clap-htsat-unfused`) with 100% local-first privacy.
+- **Reverse Audio Search (Query-by-Example):** find timbrally and acoustically similar sounds in 1 click (`🎯 Similar`) using pre-computed audio embeddings (zero extra neural inference required).
 - **Segment-Level Search & Timestamp Detection:** multi-segment sliding windows (10s window, 5s hop) with max-pooling per file, pinpointing the exact event start and end time.
 - **Interactive Waveform Highlight:** Plotly waveform displaying the salient matched range in an overlay color with auto-seeking audio playback.
 - **Session Shortlist:** collect, review, and manage favorite candidate sounds during sound design sessions.
