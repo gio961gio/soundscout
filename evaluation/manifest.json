@@ -1,0 +1,295 @@
+{
+  "version": 1,
+  "total_files": 36,
+  "license": "CC0 / Antigravity Synthetic Audio Benchmark",
+  "records": [
+    {
+      "file_id": "IMP_01",
+      "relative_path": "Impacts/metal_anvil_impact.wav",
+      "category": "Impacts",
+      "name": "metal_anvil_impact.wav",
+      "duration_seconds": 3.5,
+      "description": "Heavy metallic anvil strike with distinct modal inharmonic ringing and exponential decay."
+    },
+    {
+      "file_id": "IMP_02",
+      "relative_path": "Impacts/wood_thud_heavy.wav",
+      "category": "Impacts",
+      "name": "wood_thud_heavy.wav",
+      "duration_seconds": 1.5,
+      "description": "Solid heavy wooden thud impact with low damped resonance."
+    },
+    {
+      "file_id": "IMP_03",
+      "relative_path": "Impacts/glass_shatter_ping.wav",
+      "category": "Impacts",
+      "name": "glass_shatter_ping.wav",
+      "duration_seconds": 2.2,
+      "description": "High bright glass strike and shatter ping with crystalline resonance."
+    },
+    {
+      "file_id": "IMP_04",
+      "relative_path": "Impacts/plastic_snap_click.wav",
+      "category": "Impacts",
+      "name": "plastic_snap_click.wav",
+      "duration_seconds": 0.4,
+      "description": "Short sharp plastic snap click with fast attack and dry finish."
+    },
+    {
+      "file_id": "IMP_05",
+      "relative_path": "Impacts/deep_sub_drop_boom.wav",
+      "category": "Impacts",
+      "name": "deep_sub_drop_boom.wav",
+      "duration_seconds": 4.0,
+      "description": "Deep sub bass drop boom impact with prolonged low frequency tail."
+    },
+    {
+      "file_id": "IMP_06",
+      "relative_path": "Impacts/boxing_glove_punch.wav",
+      "category": "Impacts",
+      "name": "boxing_glove_punch.wav",
+      "duration_seconds": 0.8,
+      "description": "Heavy physical body punch impact with muffled mid-low thump."
+    },
+    {
+      "file_id": "AMB_01",
+      "relative_path": "Ambiences/rain_steady_downpour.wav",
+      "category": "Ambiences",
+      "name": "rain_steady_downpour.wav",
+      "duration_seconds": 5.0,
+      "description": "Continuous steady rain downpour texture on hard ground."
+    },
+    {
+      "file_id": "AMB_02",
+      "relative_path": "Ambiences/wind_howling_gusts.wav",
+      "category": "Ambiences",
+      "name": "wind_howling_gusts.wav",
+      "duration_seconds": 5.0,
+      "description": "Howling wind gusts blowing across an open desolate landscape."
+    },
+    {
+      "file_id": "AMB_03",
+      "relative_path": "Ambiences/interior_room_tone.wav",
+      "category": "Ambiences",
+      "name": "interior_room_tone.wav",
+      "duration_seconds": 5.0,
+      "description": "Quiet indoor room tone with subtle electrical mains hum."
+    },
+    {
+      "file_id": "AMB_04",
+      "relative_path": "Ambiences/forest_night_crickets.wav",
+      "category": "Ambiences",
+      "name": "forest_night_crickets.wav",
+      "duration_seconds": 5.0,
+      "description": "Outdoor night forest atmosphere with high rhythmic chirping crickets."
+    },
+    {
+      "file_id": "AMB_05",
+      "relative_path": "Ambiences/underwater_muffled_drone.wav",
+      "category": "Ambiences",
+      "name": "underwater_muffled_drone.wav",
+      "duration_seconds": 4.5,
+      "description": "Submerged muffled underwater drone atmosphere with gentle aquatic pressure."
+    },
+    {
+      "file_id": "AMB_06",
+      "relative_path": "Ambiences/distant_thunder_rolling.wav",
+      "category": "Ambiences",
+      "name": "distant_thunder_rolling.wav",
+      "duration_seconds": 6.0,
+      "description": "Low distant thunder rumble rolling across the sky."
+    },
+    {
+      "file_id": "FOL_01",
+      "relative_path": "Foley/footsteps_gravel_walk.wav",
+      "category": "Foley",
+      "name": "footsteps_gravel_walk.wav",
+      "duration_seconds": 3.5,
+      "description": "Rhythmic human footsteps walking on loose crunching gravel."
+    },
+    {
+      "file_id": "FOL_02",
+      "relative_path": "Foley/cloth_jacket_rustle.wav",
+      "category": "Foley",
+      "name": "cloth_jacket_rustle.wav",
+      "duration_seconds": 2.5,
+      "description": "Soft cloth jacket fabric movement and rustle."
+    },
+    {
+      "file_id": "FOL_03",
+      "relative_path": "Foley/door_creak_slow.wav",
+      "category": "Foley",
+      "name": "door_creak_slow.wav",
+      "duration_seconds": 2.8,
+      "description": "High pitched squeaking and creaking wooden door opening slowly."
+    },
+    {
+      "file_id": "FOL_04",
+      "relative_path": "Foley/paper_page_turn.wav",
+      "category": "Foley",
+      "name": "paper_page_turn.wav",
+      "duration_seconds": 1.2,
+      "description": "Crisp paper sheet page turn flip foley."
+    },
+    {
+      "file_id": "FOL_05",
+      "relative_path": "Foley/keys_jangling_metal.wav",
+      "category": "Foley",
+      "name": "keys_jangling_metal.wav",
+      "duration_seconds": 2.2,
+      "description": "Bunch of metal keys jangling and clinking together."
+    },
+    {
+      "file_id": "FOL_06",
+      "relative_path": "Foley/zipper_fast_slide.wav",
+      "category": "Foley",
+      "name": "zipper_fast_slide.wav",
+      "duration_seconds": 0.9,
+      "description": "Fast metallic zipper zip slide opening."
+    },
+    {
+      "file_id": "TON_01",
+      "relative_path": "Tones/pure_sine_tone_440hz.wav",
+      "category": "Tones",
+      "name": "pure_sine_tone_440hz.wav",
+      "duration_seconds": 3.0,
+      "description": "Continuous pure sine wave tone at concert reference pitch 440 Hz."
+    },
+    {
+      "file_id": "TON_02",
+      "relative_path": "Tones/binaural_beating_drone.wav",
+      "category": "Tones",
+      "name": "binaural_beating_drone.wav",
+      "duration_seconds": 4.0,
+      "description": "Slow beating acoustic drone with interference pulsation."
+    },
+    {
+      "file_id": "TON_03",
+      "relative_path": "Tones/distorted_sawtooth_lead.wav",
+      "category": "Tones",
+      "name": "distorted_sawtooth_lead.wav",
+      "duration_seconds": 3.0,
+      "description": "Distorted aggressive analog synthesizer sawtooth harmonic lead tone."
+    },
+    {
+      "file_id": "TON_04",
+      "relative_path": "Tones/church_organ_chord.wav",
+      "category": "Tones",
+      "name": "church_organ_chord.wav",
+      "duration_seconds": 4.0,
+      "description": "Sustained church pipe organ harmonic triad chord."
+    },
+    {
+      "file_id": "TON_05",
+      "relative_path": "Tones/sub_bass_pulse_60hz.wav",
+      "category": "Tones",
+      "name": "sub_bass_pulse_60hz.wav",
+      "duration_seconds": 4.0,
+      "description": "Pulsing deep 60 Hz electronic sub bass tone."
+    },
+    {
+      "file_id": "TON_06",
+      "relative_path": "Tones/high_piercing_sine_beep.wav",
+      "category": "Tones",
+      "name": "high_piercing_sine_beep.wav",
+      "duration_seconds": 2.0,
+      "description": "High pitched piercing electronic sine beep warning alarm."
+    },
+    {
+      "file_id": "MEC_01",
+      "relative_path": "Mechanical/clock_ticking_steady.wav",
+      "category": "Mechanical",
+      "name": "clock_ticking_steady.wav",
+      "duration_seconds": 4.0,
+      "description": "Steady analog wall clock ticking rhythmic mechanism."
+    },
+    {
+      "file_id": "MEC_02",
+      "relative_path": "Mechanical/engine_idle_diesel.wav",
+      "category": "Mechanical",
+      "name": "engine_idle_diesel.wav",
+      "duration_seconds": 4.0,
+      "description": "Heavy vehicle diesel engine idling chug with low rumble."
+    },
+    {
+      "file_id": "MEC_03",
+      "relative_path": "Mechanical/camera_shutter_click.wav",
+      "category": "Mechanical",
+      "name": "camera_shutter_click.wav",
+      "duration_seconds": 0.5,
+      "description": "Mechanical photo camera shutter double click transient."
+    },
+    {
+      "file_id": "MEC_04",
+      "relative_path": "Mechanical/stepper_motor_chirp.wav",
+      "category": "Mechanical",
+      "name": "stepper_motor_chirp.wav",
+      "duration_seconds": 2.0,
+      "description": "Robotic stepper motor 3D printer movement frequency chirps."
+    },
+    {
+      "file_id": "MEC_05",
+      "relative_path": "Mechanical/rotary_telephone_dial.wav",
+      "category": "Mechanical",
+      "name": "rotary_telephone_dial.wav",
+      "duration_seconds": 2.5,
+      "description": "Vintage rotary telephone dial wheel spinning and clicking return ratchet."
+    },
+    {
+      "file_id": "MEC_06",
+      "relative_path": "Mechanical/robotic_servo_whine.wav",
+      "category": "Mechanical",
+      "name": "robotic_servo_whine.wav",
+      "duration_seconds": 2.2,
+      "description": "Electronic robotic servo motor actuator high pitched movement whine."
+    },
+    {
+      "file_id": "TRN_01",
+      "relative_path": "Transitions/whoosh_fast_air_pass.wav",
+      "category": "Transitions",
+      "name": "whoosh_fast_air_pass.wav",
+      "duration_seconds": 2.5,
+      "description": "Fast sweeping dynamic air whoosh flyby transition sound."
+    },
+    {
+      "file_id": "TRN_02",
+      "relative_path": "Transitions/riser_tension_pitch_sweep.wav",
+      "category": "Transitions",
+      "name": "riser_tension_pitch_sweep.wav",
+      "duration_seconds": 4.0,
+      "description": "Exponential rising pitch synth riser building tension."
+    },
+    {
+      "file_id": "TRN_03",
+      "relative_path": "Transitions/laser_blaster_downsweep.wav",
+      "category": "Transitions",
+      "name": "laser_blaster_downsweep.wav",
+      "duration_seconds": 0.4,
+      "description": "Sci-fi laser blaster weapon beam shot with fast downward pitch chirp."
+    },
+    {
+      "file_id": "TRN_04",
+      "relative_path": "Transitions/reverse_cymbal_swell.wav",
+      "category": "Transitions",
+      "name": "reverse_cymbal_swell.wav",
+      "duration_seconds": 3.0,
+      "description": "Reverse metallic cymbal crash swell riser crescendo."
+    },
+    {
+      "file_id": "TRN_05",
+      "relative_path": "Transitions/glitch_digital_stutter.wav",
+      "category": "Transitions",
+      "name": "glitch_digital_stutter.wav",
+      "duration_seconds": 1.8,
+      "description": "Fast repeating digital buffer stutter glitch transition."
+    },
+    {
+      "file_id": "TRN_06",
+      "relative_path": "Transitions/downshifter_sub_impact.wav",
+      "category": "Transitions",
+      "name": "downshifter_sub_impact.wav",
+      "duration_seconds": 3.5,
+      "description": "Cinematic heavy downward sub impact boom drop."
+    }
+  ]
+}

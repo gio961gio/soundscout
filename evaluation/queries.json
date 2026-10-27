@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "total_queries": 20,
+  "queries": [
+    {
+      "query_id": "Q01",
+      "query_text": "heavy metallic anvil impact with ringing tail",
+      "query_type": "material",
+      "relevant_file_ids": [
+        "IMP_01"
+      ]
+    },
+    {
+      "query_id": "Q02",
+      "query_text": "solid heavy wooden thud impact",
+      "query_type": "material",
+      "relevant_file_ids": [
+        "IMP_02"
+      ]
+    },
+    {
+      "query_id": "Q03",
+      "query_text": "sharp glass shatter ping with high resonance",
+      "query_type": "material",
+      "relevant_file_ids": [
+        "IMP_03"
+      ]
+    },
+    {
+      "query_id": "Q04",
+      "query_text": "deep sub drop bass boom",
+      "query_type": "material",
+      "relevant_file_ids": [
+        "IMP_05",
+        "TRN_06"
+      ]
+    },
+    {
+      "query_id": "Q05",
+      "query_text": "heavy physical boxing body punch impact",
+      "query_type": "material",
+      "relevant_file_ids": [
+        "IMP_06"
+      ]
+    },
+    {
+      "query_id": "Q06",
+      "query_text": "steady rain downpour texture on hard ground",
+      "query_type": "ambience",
+      "relevant_file_ids": [
+        "AMB_01"
+      ]
+    },
+    {
+      "query_id": "Q07",
+      "query_text": "howling wind gusts blowing across open landscape",
+      "query_type": "ambience",
+      "relevant_file_ids": [
+        "AMB_02"
+      ]
+    },
+    {
+      "query_id": "Q08",
+      "query_text": "quiet interior room tone with electrical hum",
+      "query_type": "ambience",
+      "relevant_file_ids": [
+        "AMB_03"
+      ]
+    },
+    {
+      "query_id": "Q09",
+      "query_text": "outdoor night crickets chirping rhythmically",
+      "query_type": "ambience",
+      "relevant_file_ids": [
+        "AMB_04"
+      ]
+    },
+    {
+      "query_id": "Q10",
+      "query_text": "low distant rolling thunder rumbling",
+      "query_type": "ambience",
+      "relevant_file_ids": [
+        "AMB_06"
+      ]
+    },
+    {
+      "query_id": "Q11",
+      "query_text": "footsteps walking on loose crunch gravel",
+      "query_type": "foley",
+      "relevant_file_ids": [
+        "FOL_01"
+      ]
+    },
+    {
+      "query_id": "Q12",
+      "query_text": "metal keys jangling and clinking together",
+      "query_type": "foley",
+      "relevant_file_ids": [
+        "FOL_05"
+      ]
+    },
+    {
+      "query_id": "Q13",
+      "query_text": "slow creaking old wooden door opening",
+      "query_type": "foley",
+      "relevant_file_ids": [
+        "FOL_03"
+      ]
+    },
+    {
+      "query_id": "Q14",
+      "query_text": "crisp paper sheet page turn flip",
+      "query_type": "foley",
+      "relevant_file_ids": [
+        "FOL_04"
+      ]
+    },
+    {
+      "query_id": "Q15",
+      "query_text": "pure reference 440 Hz sine wave tone",
+      "query_type": "tone",
+      "relevant_file_ids": [
+        "TON_01"
+      ]
+    },
+    {
+      "query_id": "Q16",
+      "query_text": "pipe organ church harmonic triad chord",
+      "query_type": "tone",
+      "relevant_file_ids": [
+        "TON_04"
+      ]
+    },
+    {
+      "query_id": "Q17",
+      "query_text": "high pitched piercing electronic beep alarm",
+      "query_type": "tone",
+      "relevant_file_ids": [
+        "TON_06"
+      ]
+    },
+    {
+      "query_id": "Q18",
+      "query_text": "steady clock ticking rhythm mechanism",
+      "query_type": "mechanical",
+      "relevant_file_ids": [
+        "MEC_01"
+      ]
+    },
+    {
+      "query_id": "Q19",
+      "query_text": "diesel vehicle engine idling low rumble",
+      "query_type": "mechanical",
+      "relevant_file_ids": [
+        "MEC_02"
+      ]
+    },
+    {
+      "query_id": "Q20",
+      "query_text": "fast air whoosh flyby movement transition",
+      "query_type": "action",
+      "relevant_file_ids": [
+        "TRN_01"
+      ]
+    }
+  ]
+}
