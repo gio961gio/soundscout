@@ -10,6 +10,16 @@
 - Test per segmentazione, filtri, ranking e riuso embedding.
 - Documentazione per installazione, architettura e limiti.
 
+## Aggiornamento P2 — Ricerca a Livello di Segmento e Timestamp (27/10/2026)
+
+- Architettura audio temporale: creata dataclass `TimedSegment` e funzione `audio_segments_timed` in `soundscout/audio.py` con hop da 5s su finestre da 10s.
+- Modello CLAP: aggiunto `embed_audio_segments` in `soundscout/model.py` per preservare vettori 512-D per ciascun segmento senza diluizione da media globale.
+- Indice vettoriale v2: aggiornato `soundscout/index.py` con `INDEX_VERSION = 2`, offset di segmentazione, slicing e salvataggio 2D (`np.vstack`) con supporto robusto al riuso parziale.
+- Ranking max-pooling: aggiornato `soundscout/search.py` per identificare il segmento saliente, arricchendo i risultati con `match_start_seconds` e `match_end_seconds`.
+- UX interattiva in `app.py`: evidenziazione dell'intervallo temporale rilevato sulla waveform Plotly (overlay arancione trasparente) e auto-seeking dell'audio player su `start_time`.
+- Test unitari: aggiunti in `tests/test_segments.py` verifiche per file brevi, file lunghi, max-pooling e concatenazione multi-segmento eterogenea (`18 passed in 2.85s`).
+- Revisione tecnica con Argon via `/argon-bridge`: risolte le osservazioni del Round 1 (concatenazione 2D e validazione integrità manifesto `all()`), ottenendo `STATUS: APPROVED`.
+
 ## Aggiornamento P1 — Dataset di Valutazione e Benchmark di Retrieval (27/10/2026)
 
 - Creato generatore dataset sintetico `scripts/generate_evaluation_dataset.py`: 36 file audio sintetizzati tramite DSP in 6 categorie professionali (`Impacts`, `Ambiences`, `Foley`, `Tones`, `Mechanical`, `Transitions`).

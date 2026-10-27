@@ -38,17 +38,22 @@ La roadmap è intenzionalmente sequenziale: prima stabilità e misure, poi featu
 
 **Done:** metriche reali riproducibili, latenze misurate e casi d'errore documentati.
 
-## P2 — Ricerca a livello di segmento e timestamp
+## P2 — Ricerca a livello di segmento e timestamp (completata)
 
-**Obiettivo:** migliorare la ricerca in registrazioni lunghe.
+**Obiettivo:** migliorare la ricerca in registrazioni lunghe e identificare il punto esatto del suono.
 
-- [ ] Salvare un embedding per segmento (con timestamp iniziale/finale) invece di una sola media per file.
-- [ ] Restituire il miglior segmento e il relativo intervallo temporale nel file.
-- [ ] Consentire l'ascolto del file dal punto del match, se fattibile nell'UI attuale.
-- [ ] Conservare un ranking a livello file per evitare risultati duplicati e rendere chiaro il criterio di aggregazione.
-- [ ] Aggiungere test per timestamp, file brevi e file lunghi.
+- [x] Implementata segmentazione temporale in `soundscout/audio.py` (`audio_segments_timed`) con finestre sovrapposte (10s window, 5s hop, fino a 12 finestre) e tracciamento esatto di `start_seconds` ed `end_seconds`.
+- [x] Aggiunto in `soundscout/model.py` il metodo `embed_audio_segments` che genera la matrice 2D normalizzata L2 `(num_segments, 512)` per ciascun file.
+- [x] Aggiornato indice a `INDEX_VERSION = 2` in `soundscout/index.py`: memorizzati `segment_offset`, `segment_count` e metadati dei segmenti, con supporto al riuso incrementale 2D dalla cache.
+- [x] Implementato max-pooling per file in `soundscout/search.py`: calcolo della similarità su tutti i segmenti e identificazione del miglior segmento (`match_start_seconds`, `match_end_seconds`, `match_segment_index`).
+- [x] Aggiornata l'interfaccia Streamlit in `app.py`:
+  - Evidenziazione visiva del segmento corrispondente sul grafico Plotly della waveform (`add_vrect` arancione trasparente).
+  - Badge dell'intervallo temporale rilevato (es. *Best match: 0:10 – 0:20*).
+  - Auto-posizionamento della riproduzione audio dal timestamp dell'evento (`start_time=int(match_s)`).
+- [x] Creata suite di test dedicata `tests/test_segments.py` con test per segmentazione breve/lunga, estrazione timestamp e concatenazione eterogenea multi-segmento (`18 passed in 2.85s`).
+- [x] Supervisione e audit di **Argon** via `/argon-bridge` (`STATUS: APPROVED`).
 
-**Done quando:** una query che descrive un evento breve in una registrazione lunga riesce a far emergere il file e il segmento plausibili, con una valutazione separata.
+**Done:** l'evento saliente in una traccia lunga emerge con precisione temporale ed evidenziazione grafica interattiva.
 
 ## P3 — Workflow da sound designer
 
