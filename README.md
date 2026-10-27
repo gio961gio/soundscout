@@ -119,7 +119,42 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-## Generate a test library (optional)
+The test suite covers audio segmentation, metadata filters, cosine ranking, incremental cache reuse, error tolerance, and evaluation metrics.
+
+## Retrieval Quality Benchmark (Milestone P1)
+
+SoundScout includes an automated benchmark suite to evaluate text-to-audio retrieval quality using information retrieval metrics (Recall@K, Precision@K, MRR).
+
+### 1. Generate the 36-sound evaluation library
+
+```bash
+python scripts/generate_evaluation_dataset.py
+```
+
+This synthesizes 36 parameterized audio files across 6 professional categories (`Impacts`, `Ambiences`, `Foley`, `Tones`, `Mechanical`, `Transitions`) and generates `evaluation/manifest.json` and 20 ground-truth queries in `evaluation/queries.json`.
+
+### 2. Run the benchmark
+
+```bash
+python scripts/benchmark_retrieval.py
+```
+
+### Measured Baseline Results (Windows 11, Python 3.11, CPU execution)
+
+| Metric | Result | Meaning |
+|---|---|---|
+| **Recall@5** | **85.00%** | Relevant audio is retrieved within top 5 candidates for 85% of queries |
+| **Recall@3** | **77.50%** | Relevant audio retrieved within top 3 candidates |
+| **Recall@1** | **40.00%** | Exact target match at rank #1 |
+| **MRR (Mean Reciprocal Rank)** | **0.6184** | Average reciprocal rank of first relevant item |
+| **Query Latency (Median)** | **78.4 ms** | End-to-end text encoding + NumPy matrix cosine ranking |
+| **Query Latency (p95)** | **107.2 ms** | 95th percentile latency |
+| **Indexing Throughput (CPU)** | **2.94 files/s** | Initial extraction pass (12.2s for 36 files) |
+| **Cache Re-index Latency** | **125.9 ms** | Subsequent indexing pass with 100% vector reuse |
+
+See [`evaluation/benchmark_report.md`](evaluation/benchmark_report.md) for detailed error analysis, breakdown by category, and failure cases.
+
+## Generate a test library (optional smoke test)
 
 You can create five short synthetic files to check the indexing and preview workflow without downloading audio assets:
 
