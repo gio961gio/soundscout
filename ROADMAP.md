@@ -47,6 +47,15 @@ La roadmap è intenzionalmente sequenziale: prima stabilità e misure, poi featu
     - **Latenza query:** mediana **52.8 ms** (p95: **96.3 ms**) su CPU
     - **Fallimenti critici (miss in top 3):** **0 / 30** (100% delle query ha trovato audio rilevante nei primi 3 posti).
   - Generati `real_evaluation/manifest.json`, `queries.json`, `benchmark_report.md` e `benchmark_summary.json`.
+- [x] **Benchmark su Transienti Percussivi / One-Shot (Freesound / UPF MTG Zenodo 3665275):**
+  - Implementato `scripts/fetch_percussive_dataset.py` con streaming selettivo HTTP Range (`RemoteZipFile` via `io.RawIOBase`), estraendo 40 one-shot isolati (kick, snare, hi-hat, clap, cymbal) senza scaricare l'intero archivio da 112 MB.
+  - Valutazione su 10 query percussive e timbriche da music producer:
+    - **Top-1 Hit Rate (Precision@1):** **100.00%** (10 query su 10 con strumento corretto al 1° posto).
+    - **MRR (Mean Reciprocal Rank):** **1.0000** (ranking perfetto).
+    - **Precision@5:** **76.00%** (3.8 suoni rilevanti su 5 in top-5).
+    - **Fallimenti critici (miss in top 3):** **0 / 10** (zero errori).
+    - **Throughput CPU:** 2.41 file/s (16.60s per 40 file a freddo); cache pass: **127.4 ms** (100% riuso).
+  - Generati `percussive_evaluation/manifest.json`, `queries.json`, `benchmark_report.md` e `benchmark_summary.json`.
 - [x] Supervisione e approvazione tecnica di **Argon** via `/argon-bridge` (`STATUS: APPROVED`).
 
 **Done:** metriche reali riproducibili, latenze misurate e casi d'errore documentati.

@@ -173,6 +173,22 @@ A curated benchmark on 50 authentic audio files (30 environmental recordings fro
 
 See [`real_evaluation/benchmark_report.md`](real_evaluation/benchmark_report.md) for the detailed breakdown across human captions vs environmental categories.
 
+### Percussive One-Shot Evaluation Benchmark (Freesound / UPF MTG)
+A specialized benchmark on 40 isolated drum transients (8 kicks, 8 snares, 8 hi-hats, 8 claps, 8 cymbals) from the *Freesound One-Shot Percussive Sounds Dataset* (Universitat Pompeu Fabra Music Technology Group / ICASSP 2020), fetched selectively using HTTP Range requests:
+
+| Metric | Result | Meaning |
+|---|---|---|
+| **Precision@1 (Top-1 Hit Rate)** | **100.00%** | **10 out of 10 queries** retrieved the exact target instrument at rank #1 |
+| **MRR (Mean Reciprocal Rank)** | **1.0000** | Perfect retrieval rank across all beatmaker and timbral prompts |
+| **Precision@5** | **76.00%** | 76% of all top-5 results across all queries were target instrument matches |
+| **Recall@5** | **47.50%** | Average fraction of the 8 category targets retrieved in top-5 (max theoretical: 62.5%) |
+| **Top-3 Failures** | **0 / 10** | Zero queries failed to retrieve relevant audio in the top 3 |
+| **Query Latency (Median)** | **78.8 ms** | Real query latency on CPU |
+| **Indexing Throughput (CPU)** | **2.41 files/s** | 16.60s to embed 40 one-shots from scratch on CPU |
+| **Cache Re-index Latency** | **127.4 ms** | Subsequent indexing pass with 100% vector reuse |
+
+See [`percussive_evaluation/benchmark_report.md`](percussive_evaluation/benchmark_report.md) for individual query scores and timbral prompt analysis.
+
 ## Generate a test library (optional smoke test)
 
 You can create five short synthetic files to check the indexing and preview workflow without downloading audio assets:
