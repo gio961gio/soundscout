@@ -181,18 +181,20 @@ with col_d:
 tab_search, tab_shortlist = st.tabs(["🔍 Search Sounds", f"⭐ Session Shortlist ({len(shortlist)})"])
 
 with tab_search:
-    with st.form("search_form", clear_on_submit=False):
-        query = st.text_input(
+    col_input, col_btn = st.columns([4.2, 1])
+    with col_input:
+        query_input = st.text_input(
             "Describe the sound you want",
-            value=st.session_state.get("search_query", ""),
+            key="search_query_input",
             placeholder="e.g. distant metallic impact with long reverb",
             help="CLAP works best with concise descriptive prompts. English queries are a useful starting point.",
         )
-        search_clicked = st.form_submit_button("Search sounds", type="primary", use_container_width=True)
-    if search_clicked:
-        st.session_state["search_query"] = query.strip()
+    with col_btn:
+        st.write("")
+        st.write("")
+        st.button("Search sounds", type="primary", use_container_width=True)
 
-    active_query = st.session_state.get("search_query", "")
+    active_query = query_input.strip()
     if not active_query:
         st.caption("Tip: describe texture, distance, space, material and action — not just a broad category.")
     else:
