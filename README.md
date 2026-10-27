@@ -6,15 +6,17 @@ SoundScout indexes audio files on your computer and lets you search them with de
 
 > Portfolio MVP for audio / music technology internships. Search scores are ranking signals, not calibrated probabilities; audition the files before choosing them.
 
-## What works in this MVP
+## What works in SoundScout
 
-- Recursive indexing of a local folder and its subfolders.
-- Text-to-audio semantic retrieval using a pretrained CLAP checkpoint.
-- Incremental cache: unchanged files reuse their saved embeddings on subsequent indexing runs.
-- Audio preview and waveform preview per result.
-- Metadata filters for duration, sample rate, channel count, format and top-level folder.
-- WAV, FLAC, OGG and AIFF support through `soundfile`; MP3 decoding can use FFmpeg when installed.
-- Embeddings stay on the machine running the app. The first run downloads the pretrained model from Hugging Face.
+- **Semantic Text-to-Audio Retrieval:** powered by CLAP (`laion/clap-htsat-unfused`) with 100% local-first privacy.
+- **Segment-Level Search & Timestamp Detection:** multi-segment sliding windows (10s window, 5s hop) with max-pooling per file, pinpointing the exact event start and end time.
+- **Interactive Waveform Highlight:** Plotly waveform displaying the salient matched range in an overlay color with auto-seeking audio playback.
+- **Session Shortlist:** collect, review, and manage favorite candidate sounds during sound design sessions.
+- **DAW & Cue Sheet CSV Export:** one-click export formatted with standard broadcast timecodes (`HH:MM:SS.mmm`) and query tracking, encoded in `utf-8-sig` for instant Excel / DAW compatibility.
+- **Hybrid Search:** combine natural language semantic prompts with filename / folder keyword filters.
+- **Incremental Cache v2:** unchanged files reuse saved embeddings on subsequent runs; 100% vector reuse without re-reading audio.
+- **Multi-Format Decoder:** WAV, FLAC, OGG, AIFF, and MP3 (with FFmpeg fallback).
+- **Automated Retrieval Benchmark:** formal test harness measuring Recall@K, Precision@K, and MRR.
 
 ## Quick start
 
