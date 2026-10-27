@@ -1,0 +1,469 @@
+{
+  "index_version": 2,
+  "model_id": "laion/clap-htsat-unfused",
+  "root": "C:\\Users\\Giovanni\\Desktop\\Progetti_professionali\\SoundScout\\demo_library",
+  "created_at_epoch": 1793117025,
+  "records": [
+    {
+      "path": "demo_library/Drums/clap_01_Clap.wav",
+      "name": "clap_01_Clap.wav",
+      "relative_path": "demo_library/Drums/clap_01_Clap.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.2323,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 3716,
+      "file_format": "wav",
+      "size_bytes": 7476,
+      "mtime_ns": 1793097831756952000,
+      "segment_offset": 0,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.232,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/clap_02_crappyclap.wav",
+      "name": "clap_02_crappyclap.wav",
+      "relative_path": "demo_library/Drums/clap_02_crappyclap.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.1304,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 2086,
+      "file_format": "wav",
+      "size_bytes": 4216,
+      "mtime_ns": 1793097832744753500,
+      "segment_offset": 1,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.13,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/cymbal_01_cymbal.wav",
+      "name": "cymbal_01_cymbal.wav",
+      "relative_path": "demo_library/Drums/cymbal_01_cymbal.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.6502,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 10403,
+      "file_format": "wav",
+      "size_bytes": 20850,
+      "mtime_ns": 1793097848147925500,
+      "segment_offset": 2,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.65,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/cymbal_02_choke01.wav",
+      "name": "cymbal_02_choke01.wav",
+      "relative_path": "demo_library/Drums/cymbal_02_choke01.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.1161,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 1858,
+      "file_format": "wav",
+      "size_bytes": 3760,
+      "mtime_ns": 1793097843105819000,
+      "segment_offset": 3,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.116,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/hihat_01_hihat1.wav",
+      "name": "hihat_01_hihat1.wav",
+      "relative_path": "demo_library/Drums/hihat_01_hihat1.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.5109,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 8174,
+      "file_format": "wav",
+      "size_bytes": 16392,
+      "mtime_ns": 1793097822532775200,
+      "segment_offset": 4,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.511,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/hihat_02_hihat2.wav",
+      "name": "hihat_02_hihat2.wav",
+      "relative_path": "demo_library/Drums/hihat_02_hihat2.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.4644,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 7431,
+      "file_format": "wav",
+      "size_bytes": 14906,
+      "mtime_ns": 1793097823654412300,
+      "segment_offset": 5,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.464,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/kick_01_Ankick3T.wav",
+      "name": "kick_01_Ankick3T.wav",
+      "relative_path": "demo_library/Drums/kick_01_Ankick3T.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.4412,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 7059,
+      "file_format": "wav",
+      "size_bytes": 14162,
+      "mtime_ns": 1793097808536923500,
+      "segment_offset": 6,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.441,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/kick_02_Kick1.wav",
+      "name": "kick_02_Kick1.wav",
+      "relative_path": "demo_library/Drums/kick_02_Kick1.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.595,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 9520,
+      "file_format": "wav",
+      "size_bytes": 19084,
+      "mtime_ns": 1793097806267062700,
+      "segment_offset": 7,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.595,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/snare_01_soft.wav",
+      "name": "snare_01_soft.wav",
+      "relative_path": "demo_library/Drums/snare_01_soft.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.3483,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 5573,
+      "file_format": "wav",
+      "size_bytes": 11190,
+      "mtime_ns": 1793097813158563300,
+      "segment_offset": 8,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.348,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Drums/snare_02_Snare 01.wav",
+      "name": "snare_02_Snare 01.wav",
+      "relative_path": "demo_library/Drums/snare_02_Snare 01.wav",
+      "category": "Drums",
+      "extension": "wav",
+      "duration_seconds": 0.3483,
+      "sample_rate": 16000,
+      "channels": 1,
+      "frames": 5573,
+      "file_format": "wav",
+      "size_bytes": 11190,
+      "mtime_ns": 1793097820177774100,
+      "segment_offset": 9,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 0.348,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Foley_and_SFX/clock_tick_1-21934-A-38.wav",
+      "name": "clock_tick_1-21934-A-38.wav",
+      "relative_path": "demo_library/Foley_and_SFX/clock_tick_1-21934-A-38.wav",
+      "category": "Foley_and_SFX",
+      "extension": "wav",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 220500,
+      "file_format": "wav",
+      "size_bytes": 441044,
+      "mtime_ns": 1793096356787057300,
+      "segment_offset": 10,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 5.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Foley_and_SFX/door_wood_knock_1-101336-A-30.wav",
+      "name": "door_wood_knock_1-101336-A-30.wav",
+      "relative_path": "demo_library/Foley_and_SFX/door_wood_knock_1-101336-A-30.wav",
+      "category": "Foley_and_SFX",
+      "extension": "wav",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 220500,
+      "file_format": "wav",
+      "size_bytes": 441044,
+      "mtime_ns": 1793096347361739700,
+      "segment_offset": 11,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 5.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Foley_and_SFX/engine_1-18527-A-44.wav",
+      "name": "engine_1-18527-A-44.wav",
+      "relative_path": "demo_library/Foley_and_SFX/engine_1-18527-A-44.wav",
+      "category": "Foley_and_SFX",
+      "extension": "wav",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 220500,
+      "file_format": "wav",
+      "size_bytes": 441044,
+      "mtime_ns": 1793096359229590600,
+      "segment_offset": 12,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 5.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Foley_and_SFX/footsteps_1-155858-A-25.wav",
+      "name": "footsteps_1-155858-A-25.wav",
+      "relative_path": "demo_library/Foley_and_SFX/footsteps_1-155858-A-25.wav",
+      "category": "Foley_and_SFX",
+      "extension": "wav",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 220500,
+      "file_format": "wav",
+      "size_bytes": 441044,
+      "mtime_ns": 1793096344899257400,
+      "segment_offset": 13,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 5.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Foley_and_SFX/rain_1-17367-A-10.wav",
+      "name": "rain_1-17367-A-10.wav",
+      "relative_path": "demo_library/Foley_and_SFX/rain_1-17367-A-10.wav",
+      "category": "Foley_and_SFX",
+      "extension": "wav",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 220500,
+      "file_format": "wav",
+      "size_bytes": 441044,
+      "mtime_ns": 1793096349638468800,
+      "segment_offset": 14,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 5.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Synthetic_DSP/01_sustained_tone_synthetic.wav",
+      "name": "01_sustained_tone_synthetic.wav",
+      "relative_path": "demo_library/Synthetic_DSP/01_sustained_tone_synthetic.wav",
+      "category": "Synthetic_DSP",
+      "extension": "wav",
+      "duration_seconds": 2.0,
+      "sample_rate": 48000,
+      "channels": 1,
+      "frames": 96000,
+      "file_format": "wav",
+      "size_bytes": 192044,
+      "mtime_ns": 1793085120849541400,
+      "segment_offset": 15,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 2.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Synthetic_DSP/02_noise_burst_synthetic.wav",
+      "name": "02_noise_burst_synthetic.wav",
+      "relative_path": "demo_library/Synthetic_DSP/02_noise_burst_synthetic.wav",
+      "category": "Synthetic_DSP",
+      "extension": "wav",
+      "duration_seconds": 1.2,
+      "sample_rate": 48000,
+      "channels": 1,
+      "frames": 57600,
+      "file_format": "wav",
+      "size_bytes": 115244,
+      "mtime_ns": 1793085120862932300,
+      "segment_offset": 16,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 1.2,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Synthetic_DSP/03_low_rumble_synthetic.wav",
+      "name": "03_low_rumble_synthetic.wav",
+      "relative_path": "demo_library/Synthetic_DSP/03_low_rumble_synthetic.wav",
+      "category": "Synthetic_DSP",
+      "extension": "wav",
+      "duration_seconds": 4.0,
+      "sample_rate": 48000,
+      "channels": 1,
+      "frames": 192000,
+      "file_format": "wav",
+      "size_bytes": 384044,
+      "mtime_ns": 1793085120795815100,
+      "segment_offset": 17,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 4.0,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Synthetic_DSP/04_metallic_ring_synthetic.wav",
+      "name": "04_metallic_ring_synthetic.wav",
+      "relative_path": "demo_library/Synthetic_DSP/04_metallic_ring_synthetic.wav",
+      "category": "Synthetic_DSP",
+      "extension": "wav",
+      "duration_seconds": 3.5,
+      "sample_rate": 48000,
+      "channels": 1,
+      "frames": 168000,
+      "file_format": "wav",
+      "size_bytes": 336044,
+      "mtime_ns": 1793085120881180100,
+      "segment_offset": 18,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 3.5,
+          "segment_index": 0
+        }
+      ]
+    },
+    {
+      "path": "demo_library/Synthetic_DSP/05_sweeping_whoosh_synthetic.wav",
+      "name": "05_sweeping_whoosh_synthetic.wav",
+      "relative_path": "demo_library/Synthetic_DSP/05_sweeping_whoosh_synthetic.wav",
+      "category": "Synthetic_DSP",
+      "extension": "wav",
+      "duration_seconds": 3.0,
+      "sample_rate": 48000,
+      "channels": 1,
+      "frames": 144000,
+      "file_format": "wav",
+      "size_bytes": 288044,
+      "mtime_ns": 1793085120827284800,
+      "segment_offset": 19,
+      "segment_count": 1,
+      "segments": [
+        {
+          "start_seconds": 0.0,
+          "end_seconds": 3.0,
+          "segment_index": 0
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

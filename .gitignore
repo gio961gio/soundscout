@@ -18,6 +18,7 @@ htmlcov/
 
 # Local Vector Cache & Temp files
 *.npy
+!bundled_index/embeddings.npy
 *.npz
 *.tmp
 temp_*

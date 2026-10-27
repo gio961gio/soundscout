@@ -4,25 +4,28 @@
 [![Python 3.10 | 3.11 | 3.12](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Model: LAION-CLAP HTSAT](https://img.shields.io/badge/Model-LAION--CLAP%20HTSAT--Unfused-orange.svg)](https://huggingface.co/laion/clap-htsat-unfused)
-[![Tests: 28 Passed](https://img.shields.io/badge/Tests-28%20Passed%20(100%25)-brightgreen.svg)](#-automated-test-suite)
+[![Tests: 30 Passed](https://img.shields.io/badge/Tests-30%20Passed%20(100%25)-brightgreen.svg)](#-automated-test-suite)
 [![Architecture: Local-First](https://img.shields.io/badge/Architecture-Local--First%20%26%20Zero--Cloud-blueviolet.svg)](#-system-architecture)
+[![Live Demo](https://img.shields.io/badge/Streamlit_Cloud-Live_Demo-FF4B4B?logo=streamlit&logoColor=white)](https://soundscout-engine.streamlit.app)
 
 **SoundScout** is a high-performance, local-first semantic audio search engine and neural sample retrieval platform. Built for sound designers, film sound supervisors, music producers, and game audio engineers, it replaces brittle filename tagging with zero-shot natural language description matching, sub-millisecond reverse audio search (Query-by-Example), and salient event timestamp detection.
 
 Developed by **Giovanni Antonecchia** (*Music Engineering, Politecnico di Milano*).
 
 > [!NOTE]
-> **Proprietary Neural Retrieval Engine & Evaluation Access**  
-> SoundScout's core neural indexing pipeline, segment-level timestamp pooling algorithms, and reverse audio search engines are protected intellectual property.  
+> **Proprietary Neural Retrieval Engine & Live Testing**  
+> SoundScout\'s core neural indexing pipeline, segment-level timestamp pooling algorithms, and reverse audio search engines are protected intellectual property.  
 > 
-> Full source code access for institutional evaluation, academic collaboration, or recruitment review is available upon request by contacting [Giovanni Antonecchia](mailto:gio.antonecchia961@gmail.com).
+> You can **test the engine live with your own audio files** via the **[Interactive Web Demo](https://soundscout-engine.streamlit.app)** or request full source code access for institutional and recruitment evaluation by contacting [Giovanni Antonecchia](mailto:gio.antonecchia961@gmail.com).
 
 ---
 
 ## 📸 Visual Showcase & Interface
 
 ### 1. Minimalist Dark Studio Web Dashboard
-Interactive local web application featuring natural-language search, dynamic metadata filtering, salient interval waveform overlays, synchronized audio playback, and instant DAW session export.
+Interactive web and desktop application featuring natural-language search, dynamic metadata filtering, salient interval waveform overlays, synchronized audio playback, drag-and-drop query-by-audio, and instant DAW session export.
+
+👉 **Live Interactive Web Demo:** [soundscout-engine.streamlit.app](https://soundscout-engine.streamlit.app)
 
 ![Dark Studio Dashboard](assets/studio_dashboard_dark.png)
 
@@ -38,6 +41,8 @@ Empirical retrieval performance across 3 distinct evaluation corpora: authentic 
 ### 3. Key Technical Capabilities
 
 - **Natural-Language Semantic Audio Search:** Powered by CLAP (`laion/clap-htsat-unfused`), projecting sound files and descriptive queries into a shared 512-dimensional multimodal latent space.
+- **Interactive Curated Demo Library:** Pre-indexed with 20 authentic samples (kick, snare, hi-hat, clap, cymbal, footsteps, rain, engine, synthetic impacts) with pre-computed CLAP embeddings for **instant 0-second startup** on Streamlit Cloud.
+- **Upload Your Own Audio (Query-by-Audio):** Drag-and-drop any WAV/MP3/FLAC/OGG file from your device. SoundScout extracts its timbral embedding with CLAP and instantly ranks library sounds by acoustic similarity.
 - **Reverse Audio Search (Query-by-Example):** Find acoustically and timbrally similar files in 1 click (`🎯 Similar`) using pre-computed audio embeddings—**zero additional neural inference required** (1.2 ms search latency).
 - **Direct Library Browsing:** Audition and navigate local sample packs directly without a text query, filtering by category or duration, and finding similar sounds instantly.
 - **Segment-Level Search & Salient Timestamps:** 10-second sliding windows with 5-second hops and per-file max pooling, pinpointing exact temporal onsets and event intervals within longer audio stems.
@@ -249,7 +254,9 @@ tests/test_workflow.py::test_results_to_csv_output PASSED                [ 92%]
 tests/test_workflow.py::test_results_to_csv_empty PASSED                 [ 96%]
 tests/test_workflow.py::test_filter_results_with_keyword PASSED          [100%]
 
-============================= 28 passed in 3.30s ==============================
+tests/test_performance.py::test_rank_by_audio_example_with_external_uploaded_vector PASSED [ 66%]
+tests/test_performance.py::test_load_bundled_index_returns_valid_records_and_vectors PASSED [ 70%]
+============================= 30 passed in 3.90s ==============================
 ```
 
 ---
