@@ -178,7 +178,7 @@ with col_c:
 with col_d:
     st.metric("Shortlisted sounds", len(shortlist))
 
-tab_search, tab_shortlist = st.tabs(["🔍 Search Sounds", f"⭐ Session Shortlist ({len(shortlist)})"])
+tab_search, tab_shortlist = st.tabs(["🔍 Search & Browse", f"⭐ Session Shortlist ({len(shortlist)})"])
 
 with tab_search:
     col_input, col_btn = st.columns([4.2, 1], vertical_alignment="bottom")
@@ -191,6 +191,22 @@ with tab_search:
         )
     with col_btn:
         search_clicked = st.button("Search sounds", type="primary", use_container_width=True)
+
+    with st.expander("🎯 Or pick a sound from your library to find matches immediately", expanded=False):
+        pick_col1, pick_col2 = st.columns([4, 1.2], vertical_alignment="bottom")
+        with pick_col1:
+            sound_names = [f"{r.get('name', 'audio')} [{r.get('category', 'Uncategorized')}] — {r.get('relative_path', '')}" for r in records]
+            chosen_idx = st.selectbox(
+                "Select reference audio:",
+                range(len(records)),
+                format_func=lambda i: sound_names[i],
+                key="dropdown_pick_sim",
+                label_visibility="collapsed",
+            )
+        with pick_col2:
+            if st.button("Find Similar", key="btn_dropdown_sim", type="secondary", use_container_width=True):
+                st.session_state["find_similar_source"] = records[chosen_idx]
+                st.rerun()
 
     active_query = query_input.strip()
     sim_source = st.session_state.get("find_similar_source")
@@ -209,108 +225,124 @@ with tab_search:
                 del st.session_state["find_similar_source"]
                 st.rerun()
 
-    if not active_query and not sim_source:
-        st.caption("Tip: describe texture, distance, space, material and action — or click '🎯 Similar' on any sound.")
-    else:
-        try:
-            if sim_source:
-                with st.spinner("Comparing acoustic timbre across library…"):
-                    ranked = rank_by_audio_example(sim_source, records, vectors, top_k=len(records), exclude_self=True)
-                active_label = f"similar to *{sim_source.get('name', 'audio')}*"
-                export_query_name = f"Similar to: {sim_source.get('name', '')}"
-            else:
-                with st.spinner("Comparing your query with the indexed sounds…"):
-                    embedder = get_embedder()
-                    ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
-                active_label = f"*{active_query}*"
-                export_query_name = active_query
+    is_browse_mode = not active_query and not sim_source
 
-            filtered = filter_results(
-                ranked,
-                min_duration=float(duration_range[0]),
-                max_duration=float(duration_range[1]),
-                sample_rates=selected_sample_rates,
-                extensions=selected_extensions,
-                channels=selected_channels,
-                categories=selected_categories,
-                keyword=keyword_filter,
-            )
-        except Exception as exc:
-            st.error(f"Search failed: {exc}")
-            st.stop()
+    try:
+        if sim_source:
+            with st.spinner("Comparing acoustic timbre across library…"):
+                ranked = rank_by_audio_example(sim_source, records, vectors, top_k=len(records), exclude_self=True)
+            active_label = f"similar to *{sim_source.get('name', 'audio')}*"
+            export_query_name = f"Similar to: {sim_source.get('name', '')}"
+        elif active_query:
+            with st.spinner("Comparing your query with the indexed sounds…"):
+                embedder = get_embedder()
+                ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
+            active_label = f"*{active_query}*"
+            export_query_name = active_query
+        else:
+            # Browse library mode: show all records matching sidebar filters
+            ranked = list(records)
+            active_label = "Library Collection"
+            export_query_name = "Library Browse"
 
-        res_header_col, export_col = st.columns([3.5, 1.5])
-        with res_header_col:
+        filtered = filter_results(
+            ranked,
+            min_duration=float(duration_range[0]),
+            max_duration=float(duration_range[1]),
+            sample_rates=selected_sample_rates,
+            extensions=selected_extensions,
+            channels=selected_channels,
+            categories=selected_categories,
+            keyword=keyword_filter,
+        )
+    except Exception as exc:
+        st.error(f"Search failed: {exc}")
+        st.stop()
+
+    res_header_col, export_col = st.columns([3.5, 1.5])
+    with res_header_col:
+        if is_browse_mode:
+            st.markdown(f"### 📂 Library Collection ({len(filtered)} sounds)")
+            st.caption("Browse and audition your files, filter by category/duration, or click **'🎯 Similar'** on any sound to find acoustic matches.")
+        else:
             st.markdown(f"### Results for {active_label}")
             st.caption(f"{len(filtered)} result(s) match the current filters. Similarity is a ranking score, not a probability.")
-        with export_col:
-            if filtered:
-                # Add current search query to results for export tracking
-                results_with_query = [dict(item, query=export_query_name) for item in filtered]
-                st.download_button(
-                    "📥 Export Results (CSV)",
-                    data=results_to_csv(results_with_query).encode("utf-8-sig"),
-                    file_name="soundscout_search_results.csv",
-                    mime="text/csv",
-                    use_container_width=True,
-                )
+    with export_col:
+        if filtered:
+            results_with_query = [dict(item, query=export_query_name) for item in filtered]
+            st.download_button(
+                "📥 Export Results (CSV)",
+                data=results_to_csv(results_with_query).encode("utf-8-sig"),
+                file_name="soundscout_search_results.csv",
+                mime="text/csv",
+                use_container_width=True,
+            )
 
-        if not filtered:
-            st.warning("No files match these filters. Widen the duration or metadata filters and try again.")
-        else:
-            for rank, item in enumerate(filtered[:30], start=1):
-                path = str(item["path"])
-                title_col, score_col = st.columns([5, 1])
-                with title_col:
-                    t_col, sim_btn_col, fav_col = st.columns([3.6, 1.2, 1.2])
-                    with t_col:
-                        st.markdown(f"#### {rank}. {item.get('name', Path(path).name)}")
-                        st.caption(item.get("relative_path", path))
-                    with sim_btn_col:
-                        if st.button("🎯 Similar", key=f"sim-search-{rank}-{abs(hash(path))}", help="Find timbrally similar sounds in library"):
-                            st.session_state["find_similar_source"] = item
+    if not filtered:
+        st.warning("No files match these filters. Widen the duration or metadata filters and try again.")
+    else:
+        for rank, item in enumerate(filtered[:30], start=1):
+            path = str(item["path"])
+            title_col, score_col = st.columns([5, 1])
+            with title_col:
+                t_col, sim_btn_col, fav_col = st.columns([3.6, 1.2, 1.2])
+                with t_col:
+                    st.markdown(f"#### {rank}. {item.get('name', Path(path).name)}")
+                    st.caption(item.get("relative_path", path))
+                with sim_btn_col:
+                    if st.button("🎯 Similar", key=f"sim-search-{rank}-{abs(hash(path))}", help="Find timbrally similar sounds in library"):
+                        st.session_state["find_similar_source"] = item
+                        st.rerun()
+                with fav_col:
+                    is_fav = path in shortlist
+                    if is_fav:
+                        if st.button("⭐ In Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Remove from session shortlist"):
+                            del shortlist[path]
                             st.rerun()
-                    with fav_col:
-                        is_fav = path in shortlist
-                        if is_fav:
-                            if st.button("⭐ In Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Remove from session shortlist"):
-                                del shortlist[path]
-                                st.rerun()
-                        else:
-                            if st.button("☆ Add to Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Add to session shortlist"):
-                                item_to_save = dict(item)
-                                item_to_save["query"] = export_query_name
-                                shortlist[path] = item_to_save
-                                st.rerun()
-                with score_col:
-                    st.metric("Cosine score", f"{item['similarity']:.3f}")
+                    else:
+                        if st.button("☆ Add to Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Add to session shortlist"):
+                            item_to_save = dict(item)
+                            item_to_save["query"] = export_query_name
+                            shortlist[path] = item_to_save
+                            st.rerun()
+            with score_col:
+                if is_browse_mode:
+                    st.caption(f"Format: **{item.get('extension', 'audio').upper()}**")
+                else:
+                    st.metric("Cosine score", f"{item.get('similarity', 0.0):.3f}")
 
-                match_s = float(item.get("match_start_seconds", 0.0))
-                match_e = float(item.get("match_end_seconds", item.get("duration_seconds", 0.0)))
-                total_segs = int(item.get("total_segments", 1))
-                seg_idx = int(item.get("match_segment_index", 0))
+            match_s = float(item.get("match_start_seconds", 0.0))
+            match_e = float(item.get("match_end_seconds", item.get("duration_seconds", 0.0)))
+            total_segs = int(item.get("total_segments", 1))
+            seg_idx = int(item.get("match_segment_index", 0))
 
-                details = st.columns(4)
-                details[0].caption(f"Duration: **{format_duration(item.get('duration_seconds', 0))}**")
+            details = st.columns(4)
+            details[0].caption(f"Duration: **{format_duration(item.get('duration_seconds', 0))}**")
+            if not is_browse_mode and total_segs > 1:
                 details[1].caption(f"Best match: **{format_duration(match_s)} – {format_duration(match_e)}**")
-                details[2].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
-                details[3].caption(f"Segment: **{seg_idx + 1} / {total_segs}**")
+            else:
+                details[1].caption(f"Category: **{item.get('category', 'Uncategorized')}**")
+            details[2].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
+            details[3].caption(f"Segments: **{total_segs}**")
 
-                left, right = st.columns([1, 1.6])
-                with left:
-                    try:
-                        start_offset = int(match_s) if total_segs > 1 else 0
-                        st.audio(path, format=mime_for(path), start_time=start_offset)
-                        if total_segs > 1:
-                            st.caption(f"🎯 Salient event starts at **{format_duration(match_s)}**")
-                    except Exception:
-                        st.caption("Audio preview is not available in this browser for this format.")
-                with right:
+            left, right = st.columns([1, 1.6])
+            with left:
+                try:
+                    start_offset = int(match_s) if (not is_browse_mode and total_segs > 1) else 0
+                    st.audio(path, format=mime_for(path), start_time=start_offset)
+                    if not is_browse_mode and total_segs > 1:
+                        st.caption(f"🎯 Salient event starts at **{format_duration(match_s)}**")
+                except Exception:
+                    st.caption("Audio preview is not available in this browser for this format.")
+            with right:
+                if is_browse_mode:
+                    show_waveform(path, key=f"{rank}-{abs(hash(path))}")
+                else:
                     show_waveform(path, key=f"{rank}-{abs(hash(path))}", match_start=match_s, match_end=match_e)
-                st.divider()
+            st.divider()
 
-            if len(filtered) > 30:
-                st.caption("Showing the first 30 results. Narrow the query or filters to refine the list.")
+        if len(filtered) > 30:
+            st.caption("Showing the first 30 sounds. Narrow by category or filters to refine the list.")
 
 with tab_shortlist:
     st.markdown("### ⭐ Session Shortlist")
