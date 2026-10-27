@@ -1,11 +1,44 @@
+# Python & Bytecode
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
 .venv/
 venv/
+ENV/
+env/
+
+# Testing & Coverage
 .pytest_cache/
-argon_feedback*.md
+.coverage
+htmlcov/
+
+# Local Vector Cache & Temp files
+*.npy
+*.npz
+*.tmp
+temp_*
+.soundscout/
+
+# Evaluation Library Audio Corpora (Large WAVs)
 evaluation_library/
 real_evaluation_library/
 percussive_evaluation_library/
+
+# Streamlit Local Secrets & OS Files
 .streamlit/secrets.toml
 .DS_Store
+Thumbs.db
+
+# Internal Development & AI Agent Scaffolding
+argon_feedback*.md
+ANTIGRAVITY_*.md
+PROJECT_HANDOFF.md
+ARCHITECTURE.md
+ROADMAP.md
+VALIDATION_PLAN.md
+CHANGELOG_HANDOFF.md
+AGENTS.md
