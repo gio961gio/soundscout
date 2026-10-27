@@ -1,0 +1,87 @@
+{
+  "timestamp": 1793099245,
+  "platform": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.5",
+    "has_faiss": true,
+    "faiss_version": "1.15.1",
+    "vector_dim": 512
+  },
+  "tiers": [
+    {
+      "vector_count": 1000,
+      "file_count": 248,
+      "matrix_mb": 1.95,
+      "manifest_mb": 0.1,
+      "total_mem_mb": 2.06,
+      "numpy_baseline_ms": 2.13,
+      "numpy_baseline_p95_ms": 2.56,
+      "numpy_optimized_ms": 0.94,
+      "numpy_optimized_p95_ms": 1.05,
+      "faiss_flatip_ms": 0.125,
+      "faiss_flatip_p95_ms": 0.141,
+      "faiss_build_ms": 1.09,
+      "speedup_opt_vs_base": 2.25
+    },
+    {
+      "vector_count": 5000,
+      "file_count": 1234,
+      "matrix_mb": 9.77,
+      "manifest_mb": 0.51,
+      "total_mem_mb": 10.28,
+      "numpy_baseline_ms": 16.51,
+      "numpy_baseline_p95_ms": 23.96,
+      "numpy_optimized_ms": 8.91,
+      "numpy_optimized_p95_ms": 9.63,
+      "faiss_flatip_ms": 1.796,
+      "faiss_flatip_p95_ms": 2.011,
+      "faiss_build_ms": 9.74,
+      "speedup_opt_vs_base": 1.85
+    },
+    {
+      "vector_count": 10000,
+      "file_count": 2509,
+      "matrix_mb": 19.53,
+      "manifest_mb": 1.04,
+      "total_mem_mb": 20.57,
+      "numpy_baseline_ms": 24.74,
+      "numpy_baseline_p95_ms": 28.44,
+      "numpy_optimized_ms": 19.16,
+      "numpy_optimized_p95_ms": 20.92,
+      "faiss_flatip_ms": 3.088,
+      "faiss_flatip_p95_ms": 4.812,
+      "faiss_build_ms": 17.68,
+      "speedup_opt_vs_base": 1.29
+    },
+    {
+      "vector_count": 50000,
+      "file_count": 12580,
+      "matrix_mb": 97.66,
+      "manifest_mb": 5.2,
+      "total_mem_mb": 102.85,
+      "numpy_baseline_ms": 169.35,
+      "numpy_baseline_p95_ms": 254.13,
+      "numpy_optimized_ms": 82.21,
+      "numpy_optimized_p95_ms": 183.52,
+      "faiss_flatip_ms": 26.311,
+      "faiss_flatip_p95_ms": 41.242,
+      "faiss_build_ms": 57.63,
+      "speedup_opt_vs_base": 2.06
+    },
+    {
+      "vector_count": 100000,
+      "file_count": 25094,
+      "matrix_mb": 195.31,
+      "manifest_mb": 10.39,
+      "total_mem_mb": 205.7,
+      "numpy_baseline_ms": 263.09,
+      "numpy_baseline_p95_ms": 343.77,
+      "numpy_optimized_ms": 118.57,
+      "numpy_optimized_p95_ms": 167.91,
+      "faiss_flatip_ms": 26.146,
+      "faiss_flatip_p95_ms": 28.264,
+      "faiss_build_ms": 101.86,
+      "speedup_opt_vs_base": 2.22
+    }
+  ]
+}
