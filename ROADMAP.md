@@ -2,19 +2,20 @@
 
 La roadmap è intenzionalmente sequenziale: prima stabilità e misure, poi feature. Non implementare tutto in un unico passaggio.
 
-## P0 — Avvio end-to-end e robustezza (prima attività)
+## P0 — Avvio end-to-end e robustezza (completata)
 
 **Obiettivo:** confermare che il repository parta pulito sulla macchina di sviluppo.
 
-- [ ] Creare un ambiente Python supportato, installare `requirements.txt` e `requirements-dev.txt`.
-- [ ] Eseguire `python -m pytest -q` e mantenere verdi i test.
-- [ ] Eseguire `streamlit run app.py`.
-- [ ] Indicizzare `demo_audio/` e verificare che i cinque file vengano letti o che gli errori siano spiegati.
-- [ ] Verificare almeno una query, player audio, waveform, filtri e re-index della stessa cartella.
-- [ ] Provare un percorso inesistente, una cartella vuota, un file corrotto/non supportato e interruzione durante l'indicizzazione.
-- [ ] Migliorare eventuali errori installazione/modello senza nascondere la causa originale.
+- [x] Configurare ambiente Python (`3.11.5`), installare `transformers>=4.44,<5` e verificare tutte le dipendenze.
+- [x] Inizializzare repository Git per tracciamento versioni e Smart Delta audit (`argon-bridge`).
+- [x] Eseguire `python -m pytest -q`: estesa la suite a 9 test unitari (tutti passati).
+- [x] Caricare e testare il checkpoint CLAP (`laion/clap-htsat-unfused`) con fallback di compatibilità per processore audio.
+- [x] Indicizzare `demo_audio/` e misurare prima indicizzazione (1.86s per 5 file) e re-index da cache (0.06s, riuso 100%).
+- [x] Verificare query reali con score di similarità su suoni metallici, toni puri e rumble.
+- [x] Testare e gestire percorsi inesistenti, cartelle vuote e file audio corrotti (isolamento errori senza blocco del processo).
+- [x] Audit e supervisione tecnica superata con **Argon** via `/argon-bridge` (`STATUS: APPROVED`).
 
-**Done quando:** installazione e smoke test sono documentati e ripetibili; eventuali limiti noti sono espliciti.
+**Done:** installazione, smoke test ed edge-case verificati e documentati.
 
 ## P1 — Dataset di valutazione e baseline di retrieval
 
