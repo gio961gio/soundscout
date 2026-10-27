@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "total_queries": 10,
+  "queries": [
+    {
+      "query_id": "Q_PERC_01",
+      "query_text": "punchy acoustic kick drum transient with deep low end",
+      "query_type": "transient_drum",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_01",
+        "PERC_02",
+        "PERC_03",
+        "PERC_04",
+        "PERC_05",
+        "PERC_06",
+        "PERC_07",
+        "PERC_08"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_02",
+      "query_text": "crisp acoustic snare drum crack with snappy wire attack",
+      "query_type": "transient_drum",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_09",
+        "PERC_10",
+        "PERC_11",
+        "PERC_12",
+        "PERC_13",
+        "PERC_14",
+        "PERC_15",
+        "PERC_16"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_03",
+      "query_text": "metallic closed hi-hat cymbal tick transient",
+      "query_type": "transient_drum",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_17",
+        "PERC_18",
+        "PERC_19",
+        "PERC_20",
+        "PERC_21",
+        "PERC_22",
+        "PERC_23",
+        "PERC_24"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_04",
+      "query_text": "dry hand clap percussion snap one-shot",
+      "query_type": "transient_drum",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_25",
+        "PERC_26",
+        "PERC_27",
+        "PERC_28",
+        "PERC_29",
+        "PERC_30",
+        "PERC_31",
+        "PERC_32"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_05",
+      "query_text": "bright metallic crash cymbal ring and wash",
+      "query_type": "transient_drum",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_33",
+        "PERC_34",
+        "PERC_35",
+        "PERC_36",
+        "PERC_37",
+        "PERC_38",
+        "PERC_39",
+        "PERC_40"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_06",
+      "query_text": "deep sub bass kick drum one-shot",
+      "query_type": "timbral_producer",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_01",
+        "PERC_02",
+        "PERC_03",
+        "PERC_04",
+        "PERC_05",
+        "PERC_06",
+        "PERC_07",
+        "PERC_08"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_07",
+      "query_text": "tight sharp snare attack transient",
+      "query_type": "timbral_producer",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_09",
+        "PERC_10",
+        "PERC_11",
+        "PERC_12",
+        "PERC_13",
+        "PERC_14",
+        "PERC_15",
+        "PERC_16"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_08",
+      "query_text": "open hi-hat acoustic splash shimmer",
+      "query_type": "timbral_producer",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_17",
+        "PERC_18",
+        "PERC_19",
+        "PERC_20",
+        "PERC_21",
+        "PERC_22",
+        "PERC_23",
+        "PERC_24"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_09",
+      "query_text": "electronic drum machine hand clap",
+      "query_type": "timbral_producer",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_25",
+        "PERC_26",
+        "PERC_27",
+        "PERC_28",
+        "PERC_29",
+        "PERC_30",
+        "PERC_31",
+        "PERC_32"
+      ]
+    },
+    {
+      "query_id": "Q_PERC_10",
+      "query_text": "finger cymbal high frequency metallic choke",
+      "query_type": "timbral_producer",
+      "source_dataset": "Freesound-Percussive",
+      "relevant_file_ids": [
+        "PERC_33",
+        "PERC_34",
+        "PERC_35",
+        "PERC_36",
+        "PERC_37",
+        "PERC_38",
+        "PERC_39",
+        "PERC_40"
+      ]
+    }
+  ]
+}

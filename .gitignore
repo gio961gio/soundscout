@@ -6,5 +6,6 @@ venv/
 argon_feedback*.md
 evaluation_library/
 real_evaluation_library/
+percussive_evaluation_library/
 .streamlit/secrets.toml
 .DS_Store
