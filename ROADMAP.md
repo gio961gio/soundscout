@@ -34,6 +34,19 @@ La roadmap è intenzionalmente sequenziale: prima stabilità e misure, poi featu
   - **Latenza:** 78.4 ms (p95: 107.2 ms)
   - **Throughput indicizzazione:** 2.9 file/s su CPU (prima passata: 12.23s, seconda passata in cache: 125.9 ms).
 - [x] Generati report dettagliati in `evaluation/benchmark_report.md` e `evaluation/benchmark_summary.json` con analisi qualitativa di successi ed errori.
+- [x] **Benchmark su Dataset Reali (ESC-50 & Clotho DCASE v2.1):**
+  - Implementato `scripts/fetch_real_datasets.py` per l'acquisizione controllata di 50 file audio reali (30 da ESC-50 in 10 categorie ambientali/foley e 20 da Clotho DCASE con caption umane autentiche da Tampere University).
+  - Parametrizzato `scripts/benchmark_retrieval.py` con invalidazione controllata della cache per misurare il throughput reale a freddo su CPU (`42.65s`, `1.17 file/s`) e a caldo (`144.9 ms`, 100% riuso dei vettori).
+  - Valutazione su 30 query reali:
+    - **Recall@3:** **96.67%**
+    - **Recall@5:** **98.89%**
+    - **Precision@1 (Top-1 Hit Rate):** **83.33%** (25 query su 30 con match rilevante al 1° posto)
+    - **MRR:** **0.9167**
+    - **Sottogruppo Clotho (caption umane):** Recall@1 **85.0%**, Recall@3 **100.0%**, Recall@5 **100.0%**, MRR **0.9250**
+    - **Sottogruppo ESC-50 (foley/ambientale):** Recall@3 **90.0%**, Recall@5 **96.67%**, Precision@3 **90.0%**, MRR **0.9000**
+    - **Latenza query:** mediana **52.8 ms** (p95: **96.3 ms**) su CPU
+    - **Fallimenti critici (miss in top 3):** **0 / 30** (100% delle query ha trovato audio rilevante nei primi 3 posti).
+  - Generati `real_evaluation/manifest.json`, `queries.json`, `benchmark_report.md` e `benchmark_summary.json`.
 - [x] Supervisione e approvazione tecnica di **Argon** via `/argon-bridge` (`STATUS: APPROVED`).
 
 **Done:** metriche reali riproducibili, latenze misurate e casi d'errore documentati.

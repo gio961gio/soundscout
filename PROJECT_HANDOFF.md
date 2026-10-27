@@ -39,16 +39,19 @@ La prima versione deve essere locale, semplice da provare, rispettosa della priv
 
 Il codice attuale include:
 
-- Interfaccia Streamlit (`app.py`).
+- Interfaccia Streamlit (`app.py`) a due schede: Ricerca e Session Shortlist.
+- Segment-level search con sliding window (10s window, 5s hop) e timestamp detection (`match_start_seconds`, `match_end_seconds`).
+- Evidenziazione visiva dell'intervallo temporale rilevato sul grafico interattivo Plotly della waveform e auto-seeking audio.
+- Esportazione DAW conforme broadcast timecode (`HH:MM:SS.mmm`) in CSV (`utf-8-sig` per Excel/DAW).
+- Ricerca ibrida: combinazione di query semantica CLAP con keyword filter su nome file/cartella.
 - Scansione ricorsiva di una cartella locale.
-- Supporto dichiarato per WAV, FLAC, OGG, AIFF e tentativo MP3 tramite FFmpeg quando disponibile.
+- Supporto per WAV, FLAC, OGG, AIFF e MP3 tramite FFmpeg.
 - Estrazione e normalizzazione del segnale audio tramite `soundscout/audio.py`.
 - Embedding audio/testo tramite CLAP, checkpoint `laion/clap-htsat-unfused`, in `soundscout/model.py`.
-- Cache persistente degli embedding in `~/.soundscout/indexes/`, riutilizzata quando dimensione e mtime del file non sono cambiati.
+- Cache persistente v2 degli embedding in `~/.soundscout/indexes/`, riutilizzata al 100% quando dimensione e mtime non sono cambiati.
 - Ranking via cosine similarity e filtri per durata, sample rate, formato, canali e cartella di primo livello.
-- Anteprima del file audio e waveform.
-- Cinque sample sintetici in `demo_audio/` e script `scripts/generate_test_library.py`.
-- Test unitari per segmentazione, filtri, ranking e riutilizzo cache.
+- Suite di test unitari con 22 test passati al 100% (`pytest -q`).
+- Benchmark di retrieval su dataset sintetico (MRR 0.6184, Recall@5 85.0%) e su dataset reali ESC-50 + Clotho (MRR 0.9167, Recall@3 96.67%, Recall@5 98.89%, Top-1 Hit Rate 83.33%, latenza 52.8 ms).
 
 I punteggi di similarità sono **ranking score, non probabilità calibrate**.
 

@@ -141,7 +141,7 @@ This synthesizes 36 parameterized audio files across 6 professional categories (
 python scripts/benchmark_retrieval.py
 ```
 
-### Measured Baseline Results (Windows 11, Python 3.11, CPU execution)
+### Measured Baseline Results (Synthetic Dataset, CPU execution)
 
 | Metric | Result | Meaning |
 |---|---|---|
@@ -154,7 +154,24 @@ python scripts/benchmark_retrieval.py
 | **Indexing Throughput (CPU)** | **2.94 files/s** | Initial extraction pass (12.2s for 36 files) |
 | **Cache Re-index Latency** | **125.9 ms** | Subsequent indexing pass with 100% vector reuse |
 
-See [`evaluation/benchmark_report.md`](evaluation/benchmark_report.md) for detailed error analysis, breakdown by category, and failure cases.
+See [`evaluation/benchmark_report.md`](evaluation/benchmark_report.md) for synthetic baseline details.
+
+### Real-World Evaluation Benchmark (ESC-50 & Clotho DCASE)
+A curated benchmark on 50 authentic audio files (30 environmental recordings from ESC-50 across 10 categories, and 20 real recordings from Tampere University's Clotho v2.1 with crowdsourced human captions):
+
+| Metric | Result | Meaning |
+|---|---|---|
+| **Recall@5** | **98.89%** | Relevant audio retrieved within top 5 results across all queries |
+| **Recall@3** | **96.67%** | Relevant audio retrieved within top 3 results across all queries |
+| **Recall@1** | **65.56%** | Average fraction of relevant targets at rank 1 (max theoretical 33.3% for 3-target queries) |
+| **Precision@1 (Hit@1)** | **83.33%** | 25 out of 30 queries matched a relevant target at rank #1 |
+| **MRR (Mean Reciprocal Rank)** | **0.9167** | Average reciprocal rank of first relevant item |
+| **Query Latency (Median)** | **52.8 ms** | Real query latency on CPU (p95: 96.3 ms) |
+| **Indexing Throughput (CPU)** | **1.17 files/s** | Segment-level CLAP feature extraction (42.65s for 50 files on CPU) |
+| **Cache Re-index Latency** | **144.9 ms** | 100% cache vector reuse on subsequent indexing passes |
+| **Top-3 Failures** | **0 / 30** | Zero queries failed to retrieve relevant audio in the top 3 |
+
+See [`real_evaluation/benchmark_report.md`](real_evaluation/benchmark_report.md) for the detailed breakdown across human captions vs environmental categories.
 
 ## Generate a test library (optional smoke test)
 
