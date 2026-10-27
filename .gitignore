@@ -22,6 +22,7 @@ htmlcov/
 *.npz
 *.tmp
 temp_*
+temp_uploads/
 .soundscout/
 
 # Evaluation Library Audio Corpora (Large WAVs)
@@ -34,12 +35,7 @@ percussive_evaluation_library/
 .DS_Store
 Thumbs.db
 
-# Internal Development & AI Agent Scaffolding
-argon_feedback*.md
-ANTIGRAVITY_*.md
-PROJECT_HANDOFF.md
-ARCHITECTURE.md
-ROADMAP.md
-VALIDATION_PLAN.md
-CHANGELOG_HANDOFF.md
-AGENTS.md
+# Local Development & Artifacts
+*.log
+*.diff
+ci_artifacts/

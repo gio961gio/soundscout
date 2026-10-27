@@ -169,55 +169,29 @@ SoundScout includes an accelerated vector retrieval pipeline optimized for massi
 
 ---
 
-## 🚀 Quick Start
+## 🌐 Live Web Demo & Evaluation Access
 
-### Installation
+### 1. Interactive Cloud Demonstration
+SoundScout can be evaluated live directly in your browser with zero installation:  
+👉 **[soundscout-engine.streamlit.app](https://soundscout-engine.streamlit.app)**
 
-```bash
-# Clone repository
-git clone https://github.com/gio961gio/soundscout.git
-cd soundscout
+- **Semantic Text Search:** Enter natural language prompts (e.g. *"punchy snare drum"*, *"distant thunder"*, *"metallic ring"*) to retrieve timbrally matching samples.
+- **Reverse Audio Search (Query-by-Example):** Click **🎯 Similar** on any sound card to retrieve acoustically similar sounds in under 2 ms.
+- **Upload & Match:** Drag-and-drop your own audio files (`.wav`, `.mp3`, `.flac`) into the web interface to test zero-shot timbral matching against the library.
+- **DAW Export:** Curate candidate sounds into your session shortlist and export formatted broadcast cue-sheets with SMPTE timecodes.
 
-# Create and activate virtual environment
-python -m venv .venv
-# On Windows:
-.venv\Scripts\Activate.ps1
-# On macOS/Linux:
-source .venv/bin/activate
+### 2. Proprietary Engine & Source Code Access
+The SoundScout neural indexing engine, C-accelerated segment pooling, and multi-segment retrieval pipelines are proprietary intellectual property.
 
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 1. Launch Interactive Dark Studio App
-
-```bash
-# Launch Streamlit web dashboard
-streamlit run app.py
-```
-*(On Windows, you can simply double-click `Launch_SoundScout.bat`)*
-
-### 2. Index a Sound Library
-
-1. In the sidebar, enter the absolute path to your local sample library folder (e.g., `D:\SamplePacks\Foley`).
-2. Click **Index / update library**. SoundScout traverses all subfolders recursively, extracts multi-segment CLAP embeddings, and persists the cache atomically.
-3. Subsequent indexing passes reuse cached vectors automatically, finishing in under **150 ms**.
-
-### 3. Search & Audition
-
-- **Natural Language Search:** Enter descriptive prompts such as:
-  - `"heavy metallic impact with a long reverb tail"`
-  - `"distant crowd ambience in an indoor station"`
-  - `"short dry punchy kick drum"`
-  - `"sub-bass rumble transition"`
-- **Direct Similar Search (Query-by-Example):** Click `🎯 Similar` on any sound card to immediately retrieve timbrally and acoustically matching sounds without typing a prompt.
-- **DAW Cue-Sheet Export:** Add sounds to your Session Shortlist and export a formatted CSV with broadcast SMPTE timecodes (`HH:MM:SS.mmm`) ready for Pro Tools, Reaper, and Logic.
+For institutional review, academic collaboration, or recruitment evaluation access, please contact:  
+**Giovanni Antonecchia** (*Music Engineering, Politecnico di Milano*)  
+📧 **Email:** [gio.antonecchia961@gmail.com](mailto:gio.antonecchia961@gmail.com)
 
 ---
 
 ## 🧪 Automated Test Suite
 
-Run the full automated test suite containing 28 unit, integration, and performance tests:
+Run the full automated test suite containing 30 unit, integration, and performance tests:
 
 ```bash
 pip install -r requirements-dev.txt
