@@ -1,0 +1,876 @@
+{
+  "timestamp": 1793097096,
+  "system": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.5",
+    "torch": "2.12.0+cpu",
+    "transformers": "4.57.6",
+    "device": "cpu"
+  },
+  "indexing": {
+    "total_files": 50,
+    "first_pass_seconds": 42.65,
+    "throughput_files_per_sec": 1.17,
+    "cache_pass_seconds": 0.1449
+  },
+  "overall_metrics": {
+    "latency_ms": 80.428,
+    "mrr": 0.9167,
+    "precision@1": 0.8333,
+    "precision@3": 0.5222,
+    "precision@5": 0.3267,
+    "recall@1": 0.6556,
+    "recall@3": 0.9667,
+    "recall@5": 0.9889
+  },
+  "latency_ms": {
+    "median": 52.84,
+    "p95": 96.35
+  },
+  "metrics_by_type": {
+    "environmental": {
+      "latency_ms": 116.416,
+      "mrr": 0.9,
+      "precision@1": 0.8,
+      "precision@3": 0.9,
+      "precision@5": 0.58,
+      "recall@1": 0.2667,
+      "recall@3": 0.9,
+      "recall@5": 0.9667,
+      "count": 10
+    },
+    "human_caption": {
+      "latency_ms": 62.434,
+      "mrr": 0.925,
+      "precision@1": 0.85,
+      "precision@3": 0.3333,
+      "precision@5": 0.2,
+      "recall@1": 0.85,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "count": 20
+    }
+  },
+  "queries": [
+    {
+      "query_id": "Q_ESC_01",
+      "query_text": "shattering glass breaking into sharp pieces",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_01",
+        "ESC_02",
+        "ESC_03"
+      ],
+      "retrieved_top_5": [
+        "ESC_02",
+        "ESC_01",
+        "ESC_03",
+        "CLO_10",
+        "CLO_08"
+      ],
+      "ranks": {
+        "ESC_01": 2,
+        "ESC_02": 1,
+        "ESC_03": 3
+      },
+      "latency_ms": 716.2,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_02",
+      "query_text": "human footsteps walking and stepping on hard floor",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_04",
+        "ESC_05",
+        "ESC_06"
+      ],
+      "retrieved_top_5": [
+        "ESC_06",
+        "ESC_04",
+        "ESC_05",
+        "CLO_18",
+        "CLO_10"
+      ],
+      "ranks": {
+        "ESC_04": 2,
+        "ESC_05": 3,
+        "ESC_06": 1
+      },
+      "latency_ms": 73.61,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_03",
+      "query_text": "knocking loudly on a solid wooden door",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_07",
+        "ESC_08",
+        "ESC_09"
+      ],
+      "retrieved_top_5": [
+        "ESC_07",
+        "ESC_09",
+        "ESC_08",
+        "CLO_16",
+        "ESC_24"
+      ],
+      "ranks": {
+        "ESC_07": 1,
+        "ESC_08": 3,
+        "ESC_09": 2
+      },
+      "latency_ms": 48.02,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_04",
+      "query_text": "outdoor heavy rain downpour falling",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_10",
+        "ESC_11",
+        "ESC_12"
+      ],
+      "retrieved_top_5": [
+        "CLO_07",
+        "ESC_12",
+        "ESC_10",
+        "ESC_11",
+        "CLO_12"
+      ],
+      "ranks": {
+        "ESC_10": 3,
+        "ESC_11": 4,
+        "ESC_12": 2
+      },
+      "latency_ms": 42.2,
+      "recall@1": 0.0,
+      "precision@1": 0.0,
+      "recall@3": 0.6666666666666666,
+      "precision@3": 0.6666666666666666,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 0.5
+    },
+    {
+      "query_id": "Q_ESC_05",
+      "query_text": "loud thunderstorm with rolling thunder rumble",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_13",
+        "ESC_14",
+        "ESC_15"
+      ],
+      "retrieved_top_5": [
+        "CLO_07",
+        "ESC_15",
+        "ESC_13",
+        "ESC_14",
+        "ESC_10"
+      ],
+      "ranks": {
+        "ESC_13": 3,
+        "ESC_14": 4,
+        "ESC_15": 2
+      },
+      "latency_ms": 41.98,
+      "recall@1": 0.0,
+      "precision@1": 0.0,
+      "recall@3": 0.6666666666666666,
+      "precision@3": 0.6666666666666666,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 0.5
+    },
+    {
+      "query_id": "Q_ESC_06",
+      "query_text": "blowing howling gusts of cold wind",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_16",
+        "ESC_17",
+        "ESC_18"
+      ],
+      "retrieved_top_5": [
+        "ESC_16",
+        "ESC_18",
+        "CLO_17",
+        "CLO_10",
+        "CLO_07"
+      ],
+      "ranks": {
+        "ESC_16": 1,
+        "ESC_17": 11,
+        "ESC_18": 2
+      },
+      "latency_ms": 47.62,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 0.6666666666666666,
+      "precision@3": 0.6666666666666666,
+      "recall@5": 0.6666666666666666,
+      "precision@5": 0.4,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_07",
+      "query_text": "analog clock ticking rhythmic mechanism",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_19",
+        "ESC_20",
+        "ESC_21"
+      ],
+      "retrieved_top_5": [
+        "ESC_20",
+        "ESC_21",
+        "ESC_19",
+        "CLO_04",
+        "CLO_06"
+      ],
+      "ranks": {
+        "ESC_19": 3,
+        "ESC_20": 1,
+        "ESC_21": 2
+      },
+      "latency_ms": 46.66,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_08",
+      "query_text": "motor vehicle car engine running and idling",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_22",
+        "ESC_23",
+        "ESC_24"
+      ],
+      "retrieved_top_5": [
+        "ESC_22",
+        "ESC_24",
+        "ESC_23",
+        "ESC_12",
+        "CLO_10"
+      ],
+      "ranks": {
+        "ESC_22": 1,
+        "ESC_23": 3,
+        "ESC_24": 2
+      },
+      "latency_ms": 48.04,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_09",
+      "query_text": "buzzing electric chainsaw cutting",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_25",
+        "ESC_26",
+        "ESC_27"
+      ],
+      "retrieved_top_5": [
+        "ESC_27",
+        "ESC_25",
+        "ESC_26",
+        "CLO_05",
+        "CLO_01"
+      ],
+      "ranks": {
+        "ESC_25": 2,
+        "ESC_26": 3,
+        "ESC_27": 1
+      },
+      "latency_ms": 49.99,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_ESC_10",
+      "query_text": "emergency police or ambulance siren wailing",
+      "query_type": "environmental",
+      "relevant_file_ids": [
+        "ESC_28",
+        "ESC_29",
+        "ESC_30"
+      ],
+      "retrieved_top_5": [
+        "ESC_29",
+        "ESC_28",
+        "ESC_30",
+        "CLO_15",
+        "ESC_17"
+      ],
+      "ranks": {
+        "ESC_28": 2,
+        "ESC_29": 1,
+        "ESC_30": 3
+      },
+      "latency_ms": 49.84,
+      "recall@1": 0.3333333333333333,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 1.0,
+      "recall@5": 1.0,
+      "precision@5": 0.6,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_01",
+      "query_text": "A muddled noise of broken channel of the TV",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_01"
+      ],
+      "retrieved_top_5": [
+        "CLO_01",
+        "CLO_16",
+        "CLO_10",
+        "CLO_14",
+        "CLO_20"
+      ],
+      "ranks": {
+        "CLO_01": 1
+      },
+      "latency_ms": 51.18,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_02",
+      "query_text": "A person is turning a map over and over.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_02"
+      ],
+      "retrieved_top_5": [
+        "CLO_02",
+        "CLO_18",
+        "CLO_16",
+        "CLO_09",
+        "CLO_11"
+      ],
+      "ranks": {
+        "CLO_02": 1
+      },
+      "latency_ms": 52.69,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_03",
+      "query_text": "Several barnyard animals mooing in a barn while it rains outside.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_03"
+      ],
+      "retrieved_top_5": [
+        "CLO_07",
+        "CLO_03",
+        "CLO_12",
+        "ESC_12",
+        "ESC_10"
+      ],
+      "ranks": {
+        "CLO_03": 2
+      },
+      "latency_ms": 52.76,
+      "recall@1": 0.0,
+      "precision@1": 0.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 0.5
+    },
+    {
+      "query_id": "Q_CLO_04",
+      "query_text": "An office chair is squeaking as someone bends back and forth in it.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_04"
+      ],
+      "retrieved_top_5": [
+        "CLO_04",
+        "CLO_18",
+        "CLO_16",
+        "CLO_08",
+        "CLO_06"
+      ],
+      "ranks": {
+        "CLO_04": 1
+      },
+      "latency_ms": 52.92,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_05",
+      "query_text": "A flying bee is buzzing loudly around an object and its wing hits it.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_05"
+      ],
+      "retrieved_top_5": [
+        "CLO_05",
+        "CLO_12",
+        "CLO_01",
+        "CLO_11",
+        "CLO_04"
+      ],
+      "ranks": {
+        "CLO_05": 1
+      },
+      "latency_ms": 55.25,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_06",
+      "query_text": "A bow playing a stringed instrument in a one note tone repeatedly before violins join to create the melody.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_06"
+      ],
+      "retrieved_top_5": [
+        "CLO_06",
+        "CLO_08",
+        "CLO_04",
+        "CLO_10",
+        "CLO_11"
+      ],
+      "ranks": {
+        "CLO_06": 1
+      },
+      "latency_ms": 61.37,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_07",
+      "query_text": "As thunder claps far in the distance, the rain pours down.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_07"
+      ],
+      "retrieved_top_5": [
+        "CLO_07",
+        "ESC_15",
+        "ESC_16",
+        "CLO_12",
+        "ESC_13"
+      ],
+      "ranks": {
+        "CLO_07": 1
+      },
+      "latency_ms": 52.95,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_08",
+      "query_text": "Something goes round that is playing its song.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_08"
+      ],
+      "retrieved_top_5": [
+        "CLO_04",
+        "CLO_08",
+        "CLO_11",
+        "CLO_18",
+        "CLO_10"
+      ],
+      "ranks": {
+        "CLO_08": 2
+      },
+      "latency_ms": 51.14,
+      "recall@1": 0.0,
+      "precision@1": 0.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 0.5
+    },
+    {
+      "query_id": "Q_CLO_09",
+      "query_text": "A paper printer is printing off multiple pages.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_09"
+      ],
+      "retrieved_top_5": [
+        "CLO_09",
+        "CLO_19",
+        "CLO_17",
+        "CLO_02",
+        "CLO_07"
+      ],
+      "ranks": {
+        "CLO_09": 1
+      },
+      "latency_ms": 47.65,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_10",
+      "query_text": "A buzzer warns of departure, a air brake is released, while a roller coaster ride takes off.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_10"
+      ],
+      "retrieved_top_5": [
+        "CLO_10",
+        "CLO_17",
+        "ESC_17",
+        "CLO_08",
+        "ESC_16"
+      ],
+      "ranks": {
+        "CLO_10": 1
+      },
+      "latency_ms": 58.82,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_11",
+      "query_text": "A very robotic synth modulates and reverberates within itself",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_11"
+      ],
+      "retrieved_top_5": [
+        "CLO_11",
+        "CLO_10",
+        "CLO_05",
+        "CLO_19",
+        "CLO_20"
+      ],
+      "ranks": {
+        "CLO_11": 1
+      },
+      "latency_ms": 51.52,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_12",
+      "query_text": "A serene bit of nightfall is met by crickets chirping",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_12"
+      ],
+      "retrieved_top_5": [
+        "CLO_12",
+        "ESC_14",
+        "ESC_13",
+        "CLO_10",
+        "CLO_17"
+      ],
+      "ranks": {
+        "CLO_12": 1
+      },
+      "latency_ms": 53.6,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_13",
+      "query_text": "A skateboarder is coasting on his board on a back and forth ramp as voices talk in the background.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_13"
+      ],
+      "retrieved_top_5": [
+        "CLO_13",
+        "CLO_14",
+        "CLO_10",
+        "CLO_18",
+        "CLO_17"
+      ],
+      "ranks": {
+        "CLO_13": 1
+      },
+      "latency_ms": 60.56,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_14",
+      "query_text": "A group of people is standing on the street near a busy freeway.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_14"
+      ],
+      "retrieved_top_5": [
+        "CLO_14",
+        "CLO_10",
+        "ESC_29",
+        "ESC_23",
+        "ESC_22"
+      ],
+      "ranks": {
+        "CLO_14": 1
+      },
+      "latency_ms": 50.57,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_15",
+      "query_text": "A sweeping swaying sound rising upward repeatedly, then going downward repeatedly.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_15"
+      ],
+      "retrieved_top_5": [
+        "CLO_15",
+        "CLO_19",
+        "CLO_10",
+        "ESC_30",
+        "ESC_18"
+      ],
+      "ranks": {
+        "CLO_15": 1
+      },
+      "latency_ms": 67.06,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_16",
+      "query_text": "A radio cycling through stations as it is being repaired.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_16"
+      ],
+      "retrieved_top_5": [
+        "CLO_01",
+        "CLO_16",
+        "CLO_14",
+        "CLO_11",
+        "CLO_10"
+      ],
+      "ranks": {
+        "CLO_16": 2
+      },
+      "latency_ms": 72.76,
+      "recall@1": 0.0,
+      "precision@1": 0.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 0.5
+    },
+    {
+      "query_id": "Q_CLO_17",
+      "query_text": "Air is being forced through a small opening and almost making whistling noises.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_17"
+      ],
+      "retrieved_top_5": [
+        "CLO_17",
+        "CLO_03",
+        "CLO_10",
+        "CLO_12",
+        "ESC_17"
+      ],
+      "ranks": {
+        "CLO_17": 1
+      },
+      "latency_ms": 77.27,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_18",
+      "query_text": "A cold, icy drink is stirred and then sipped through a straw until it is gone.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_18"
+      ],
+      "retrieved_top_5": [
+        "CLO_18",
+        "CLO_11",
+        "CLO_20",
+        "CLO_09",
+        "CLO_04"
+      ],
+      "ranks": {
+        "CLO_18": 1
+      },
+      "latency_ms": 92.85,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_19",
+      "query_text": "A built up sound comprised of whining, chirping and other sounds that slowly dies off.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_19"
+      ],
+      "retrieved_top_5": [
+        "CLO_19",
+        "CLO_10",
+        "CLO_15",
+        "CLO_17",
+        "CLO_03"
+      ],
+      "ranks": {
+        "CLO_19": 1
+      },
+      "latency_ms": 86.55,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    },
+    {
+      "query_id": "Q_CLO_20",
+      "query_text": "A person gurgling, while trying to ape speech patterns, with some soft, occasional metal clanking in the background.",
+      "query_type": "human_caption",
+      "relevant_file_ids": [
+        "CLO_20"
+      ],
+      "retrieved_top_5": [
+        "CLO_20",
+        "CLO_18",
+        "CLO_03",
+        "CLO_11",
+        "CLO_14"
+      ],
+      "ranks": {
+        "CLO_20": 1
+      },
+      "latency_ms": 99.21,
+      "recall@1": 1.0,
+      "precision@1": 1.0,
+      "recall@3": 1.0,
+      "precision@3": 0.3333333333333333,
+      "recall@5": 1.0,
+      "precision@5": 0.2,
+      "mrr": 1.0
+    }
+  ]
+}

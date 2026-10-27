@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import json
 import platform
+import shutil
 import time
 from pathlib import Path
 
@@ -16,7 +17,7 @@ import torch
 import transformers
 
 from soundscout.eval import aggregate_retrieval_metrics, evaluate_query
-from soundscout.index import build_or_update_index, load_saved_index
+from soundscout.index import build_or_update_index, cache_dir_for, load_saved_index
 from soundscout.model import ClapEmbedder
 from soundscout.search import rank_by_text
 
@@ -25,15 +26,17 @@ def run_benchmark(
     base_dir: Path,
     report_path: Path | None = None,
     json_path: Path | None = None,
+    library_dir_name: str = "evaluation_library",
+    eval_dir_name: str = "evaluation",
 ) -> dict:
-    library_dir = base_dir / "evaluation_library"
-    eval_dir = base_dir / "evaluation"
+    library_dir = base_dir / library_dir_name
+    eval_dir = base_dir / eval_dir_name
     manifest_file = eval_dir / "manifest.json"
     queries_file = eval_dir / "queries.json"
 
     if not library_dir.exists() or not manifest_file.exists() or not queries_file.exists():
         raise FileNotFoundError(
-            "Evaluation assets missing. Run `python scripts/generate_evaluation_dataset.py` first."
+            f"Evaluation assets missing in {eval_dir}. Run generator or fetcher script first."
         )
 
     manifest_data = json.loads(manifest_file.read_text(encoding="utf-8"))
@@ -59,12 +62,20 @@ def run_benchmark(
 
     # Step 1: Indexing benchmark
     print(f"\n--- 1. Indexing Benchmark ({len(records_meta)} files) ---")
+    cache_dir = cache_dir_for(library_dir)
+    if cache_dir.exists():
+        shutil.rmtree(cache_dir, ignore_errors=True)
+
     t0 = time.time()
     stats_first = build_or_update_index(library_dir, embedder)
     t_index_first = time.time() - t0
     files_per_sec = len(records_meta) / max(t_index_first, 1e-6)
     print(f"First Indexing Pass: {t_index_first:.2f}s ({files_per_sec:.2f} files/s)")
     print(f"  Indexed: {stats_first['indexed']}, Embedded: {stats_first['embedded_now']}, Reused: {stats_first['reused']}")
+    if stats_first["embedded_now"] != len(records_meta):
+        raise RuntimeError(
+            f"Expected {len(records_meta)} newly embedded files in first pass, got {stats_first['embedded_now']}"
+        )
 
     # Incremental cache benchmark
     t0 = time.time()
@@ -180,12 +191,13 @@ def run_benchmark(
         json_path.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"Saved benchmark JSON to {json_path}")
 
+    dataset_source = manifest_data.get("source", "Standard Evaluation Dataset")
     # Format Markdown Report
     if report_path:
         md_lines = [
             "# SoundScout — Retrieval Quality Benchmark Report",
             "",
-            "> **Valutazione oggettiva della ricerca semantica (Milestone P1)** condotta sul dataset sintetico formalizzato.",
+            f"> **Valutazione oggettiva della ricerca semantica** condotta su: `{dataset_source}`.",
             "",
             "## 1. Ambiente di Test e Hardware",
             f"- **Sistema Operativo:** {platform.platform()}",
@@ -193,7 +205,7 @@ def run_benchmark(
             f"- **PyTorch:** {torch.__version__} (Device: `{embedder.device}`)",
             f"- **Transformers:** {transformers.__version__}",
             f"- **Checkpoint CLAP:** `laion/clap-htsat-unfused`",
-            f"- **Dataset:** 36 file audio sintetici in 6 categorie (Impacts, Ambiences, Foley, Tones, Mechanical, Transitions)",
+            f"- **Dataset:** {len(records_meta)} file audio ({dataset_source})",
             "",
             "## 2. Prestazioni di Indicizzazione e Latenza",
             "| Metrica | Risultato | Note |",
@@ -207,12 +219,12 @@ def run_benchmark(
             "## 3. Metriche di Retrieval Complessive",
             "| Metrica | Punteggio | Definizione |",
             "|---|---|---|",
-            f"| **Recall@1** | **{overall_metrics.get('recall@1', 0):.2%}** | File rilevante recuperato esattamente al primo posto |",
+            f"| **Recall@1** | **{overall_metrics.get('recall@1', 0):.2%}** | Quota media di target rilevanti recuperati al rank 1 (max teorico 33.3% per query con 3 target) |",
             f"| **Recall@3** | **{overall_metrics.get('recall@3', 0):.2%}** | Almeno un file rilevante nei primi 3 risultati |",
             f"| **Recall@5** | **{overall_metrics.get('recall@5', 0):.2%}** | Almeno un file rilevante nei primi 5 risultati |",
-            f"| **Precision@1** | **{overall_metrics.get('precision@1', 0):.2%}** | Precisione sul primo risultato restituito |",
-            f"| **Precision@5** | **{overall_metrics.get('precision@5', 0):.2%}** | Quota di risultati rilevanti nella top-5 |",
-            f"| **MRR (Mean Reciprocal Rank)** | **{overall_metrics.get('mrr', 0):.4f}** | Media dell'inverso della posizione del primo risultato |",
+            f"| **Precision@1 (Hit@1)** | **{overall_metrics.get('precision@1', 0):.2%}** | Percentuale di query con risultato al rank 1 rilevante (Top-1 Hit Rate) |",
+            f"| **Precision@5** | **{overall_metrics.get('precision@5', 0):.2%}** | Quota media di risultati rilevanti nella top-5 |",
+            f"| **MRR (Mean Reciprocal Rank)** | **{overall_metrics.get('mrr', 0):.4f}** | Media dell'inverso della posizione del primo risultato rilevante |",
             "",
             "## 4. Prestazioni per Categoria di Query",
             "| Categoria Query | N. Query | Recall@1 | Recall@5 | MRR |",
@@ -259,6 +271,8 @@ def run_benchmark(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-dir", default=".", help="Base project directory")
+    parser.add_argument("--library-dir", default="evaluation_library", help="Library folder name")
+    parser.add_argument("--eval-dir", default="evaluation", help="Evaluation metadata folder name")
     parser.add_argument("--report", default="evaluation/benchmark_report.md", help="Markdown report output")
     parser.add_argument("--json", default="evaluation/benchmark_summary.json", help="JSON summary output")
     args = parser.parse_args()
@@ -267,4 +281,6 @@ if __name__ == "__main__":
         base_dir=base,
         report_path=base / args.report if args.report else None,
         json_path=base / args.json if args.json else None,
+        library_dir_name=args.library_dir,
+        eval_dir_name=args.eval_dir,
     )

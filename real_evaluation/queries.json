@@ -1,0 +1,296 @@
+{
+  "version": 1,
+  "total_queries": 30,
+  "queries": [
+    {
+      "query_id": "Q_ESC_01",
+      "query_text": "shattering glass breaking into sharp pieces",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_01",
+        "ESC_02",
+        "ESC_03"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_02",
+      "query_text": "human footsteps walking and stepping on hard floor",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_04",
+        "ESC_05",
+        "ESC_06"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_03",
+      "query_text": "knocking loudly on a solid wooden door",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_07",
+        "ESC_08",
+        "ESC_09"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_04",
+      "query_text": "outdoor heavy rain downpour falling",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_10",
+        "ESC_11",
+        "ESC_12"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_05",
+      "query_text": "loud thunderstorm with rolling thunder rumble",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_13",
+        "ESC_14",
+        "ESC_15"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_06",
+      "query_text": "blowing howling gusts of cold wind",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_16",
+        "ESC_17",
+        "ESC_18"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_07",
+      "query_text": "analog clock ticking rhythmic mechanism",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_19",
+        "ESC_20",
+        "ESC_21"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_08",
+      "query_text": "motor vehicle car engine running and idling",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_22",
+        "ESC_23",
+        "ESC_24"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_09",
+      "query_text": "buzzing electric chainsaw cutting",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_25",
+        "ESC_26",
+        "ESC_27"
+      ]
+    },
+    {
+      "query_id": "Q_ESC_10",
+      "query_text": "emergency police or ambulance siren wailing",
+      "query_type": "environmental",
+      "source_dataset": "ESC-50",
+      "relevant_file_ids": [
+        "ESC_28",
+        "ESC_29",
+        "ESC_30"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_01",
+      "query_text": "A muddled noise of broken channel of the TV",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_01"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_02",
+      "query_text": "A person is turning a map over and over.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_02"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_03",
+      "query_text": "Several barnyard animals mooing in a barn while it rains outside.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_03"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_04",
+      "query_text": "An office chair is squeaking as someone bends back and forth in it.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_04"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_05",
+      "query_text": "A flying bee is buzzing loudly around an object and its wing hits it.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_05"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_06",
+      "query_text": "A bow playing a stringed instrument in a one note tone repeatedly before violins join to create the melody.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_06"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_07",
+      "query_text": "As thunder claps far in the distance, the rain pours down.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_07"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_08",
+      "query_text": "Something goes round that is playing its song.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_08"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_09",
+      "query_text": "A paper printer is printing off multiple pages.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_09"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_10",
+      "query_text": "A buzzer warns of departure, a air brake is released, while a roller coaster ride takes off.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_10"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_11",
+      "query_text": "A very robotic synth modulates and reverberates within itself",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_11"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_12",
+      "query_text": "A serene bit of nightfall is met by crickets chirping",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_12"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_13",
+      "query_text": "A skateboarder is coasting on his board on a back and forth ramp as voices talk in the background.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_13"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_14",
+      "query_text": "A group of people is standing on the street near a busy freeway.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_14"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_15",
+      "query_text": "A sweeping swaying sound rising upward repeatedly, then going downward repeatedly.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_15"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_16",
+      "query_text": "A radio cycling through stations as it is being repaired.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_16"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_17",
+      "query_text": "Air is being forced through a small opening and almost making whistling noises.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_17"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_18",
+      "query_text": "A cold, icy drink is stirred and then sipped through a straw until it is gone.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_18"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_19",
+      "query_text": "A built up sound comprised of whining, chirping and other sounds that slowly dies off.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_19"
+      ]
+    },
+    {
+      "query_id": "Q_CLO_20",
+      "query_text": "A person gurgling, while trying to ape speech patterns, with some soft, occasional metal clanking in the background.",
+      "query_type": "human_caption",
+      "source_dataset": "Clotho",
+      "relevant_file_ids": [
+        "CLO_20"
+      ]
+    }
+  ]
+}

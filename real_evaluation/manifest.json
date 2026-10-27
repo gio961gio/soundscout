@@ -1,0 +1,697 @@
+{
+  "version": 1,
+  "total_files": 50,
+  "source": "ESC-50 (GitHub) & Clotho DCASE (Tampere University / Zenodo)",
+  "records": [
+    {
+      "file_id": "ESC_01",
+      "relative_path": "ESC50/glass_breaking/1-20133-A-39.wav",
+      "name": "1-20133-A-39.wav",
+      "category": "glass_breaking",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: glass breaking"
+    },
+    {
+      "file_id": "ESC_02",
+      "relative_path": "ESC50/glass_breaking/1-84536-A-39.wav",
+      "name": "1-84536-A-39.wav",
+      "category": "glass_breaking",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: glass breaking"
+    },
+    {
+      "file_id": "ESC_03",
+      "relative_path": "ESC50/glass_breaking/1-84704-A-39.wav",
+      "name": "1-84704-A-39.wav",
+      "category": "glass_breaking",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: glass breaking"
+    },
+    {
+      "file_id": "ESC_04",
+      "relative_path": "ESC50/footsteps/1-155858-A-25.wav",
+      "name": "1-155858-A-25.wav",
+      "category": "footsteps",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: footsteps"
+    },
+    {
+      "file_id": "ESC_05",
+      "relative_path": "ESC50/footsteps/1-155858-B-25.wav",
+      "name": "1-155858-B-25.wav",
+      "category": "footsteps",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: footsteps"
+    },
+    {
+      "file_id": "ESC_06",
+      "relative_path": "ESC50/footsteps/1-155858-C-25.wav",
+      "name": "1-155858-C-25.wav",
+      "category": "footsteps",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: footsteps"
+    },
+    {
+      "file_id": "ESC_07",
+      "relative_path": "ESC50/door_wood_knock/1-101336-A-30.wav",
+      "name": "1-101336-A-30.wav",
+      "category": "door_wood_knock",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: door wood knock"
+    },
+    {
+      "file_id": "ESC_08",
+      "relative_path": "ESC50/door_wood_knock/1-103995-A-30.wav",
+      "name": "1-103995-A-30.wav",
+      "category": "door_wood_knock",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: door wood knock"
+    },
+    {
+      "file_id": "ESC_09",
+      "relative_path": "ESC50/door_wood_knock/1-103999-A-30.wav",
+      "name": "1-103999-A-30.wav",
+      "category": "door_wood_knock",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: door wood knock"
+    },
+    {
+      "file_id": "ESC_10",
+      "relative_path": "ESC50/rain/1-17367-A-10.wav",
+      "name": "1-17367-A-10.wav",
+      "category": "rain",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: rain"
+    },
+    {
+      "file_id": "ESC_11",
+      "relative_path": "ESC50/rain/1-21189-A-10.wav",
+      "name": "1-21189-A-10.wav",
+      "category": "rain",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: rain"
+    },
+    {
+      "file_id": "ESC_12",
+      "relative_path": "ESC50/rain/1-26222-A-10.wav",
+      "name": "1-26222-A-10.wav",
+      "category": "rain",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: rain"
+    },
+    {
+      "file_id": "ESC_13",
+      "relative_path": "ESC50/thunderstorm/1-101296-A-19.wav",
+      "name": "1-101296-A-19.wav",
+      "category": "thunderstorm",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: thunderstorm"
+    },
+    {
+      "file_id": "ESC_14",
+      "relative_path": "ESC50/thunderstorm/1-101296-B-19.wav",
+      "name": "1-101296-B-19.wav",
+      "category": "thunderstorm",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: thunderstorm"
+    },
+    {
+      "file_id": "ESC_15",
+      "relative_path": "ESC50/thunderstorm/1-115521-A-19.wav",
+      "name": "1-115521-A-19.wav",
+      "category": "thunderstorm",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: thunderstorm"
+    },
+    {
+      "file_id": "ESC_16",
+      "relative_path": "ESC50/wind/1-137296-A-16.wav",
+      "name": "1-137296-A-16.wav",
+      "category": "wind",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: wind"
+    },
+    {
+      "file_id": "ESC_17",
+      "relative_path": "ESC50/wind/1-29532-A-16.wav",
+      "name": "1-29532-A-16.wav",
+      "category": "wind",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: wind"
+    },
+    {
+      "file_id": "ESC_18",
+      "relative_path": "ESC50/wind/1-47709-A-16.wav",
+      "name": "1-47709-A-16.wav",
+      "category": "wind",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: wind"
+    },
+    {
+      "file_id": "ESC_19",
+      "relative_path": "ESC50/clock_tick/1-21934-A-38.wav",
+      "name": "1-21934-A-38.wav",
+      "category": "clock_tick",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: clock tick"
+    },
+    {
+      "file_id": "ESC_20",
+      "relative_path": "ESC50/clock_tick/1-21935-A-38.wav",
+      "name": "1-21935-A-38.wav",
+      "category": "clock_tick",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: clock tick"
+    },
+    {
+      "file_id": "ESC_21",
+      "relative_path": "ESC50/clock_tick/1-35687-A-38.wav",
+      "name": "1-35687-A-38.wav",
+      "category": "clock_tick",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: clock tick"
+    },
+    {
+      "file_id": "ESC_22",
+      "relative_path": "ESC50/engine/1-18527-A-44.wav",
+      "name": "1-18527-A-44.wav",
+      "category": "engine",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: engine"
+    },
+    {
+      "file_id": "ESC_23",
+      "relative_path": "ESC50/engine/1-18527-B-44.wav",
+      "name": "1-18527-B-44.wav",
+      "category": "engine",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: engine"
+    },
+    {
+      "file_id": "ESC_24",
+      "relative_path": "ESC50/engine/1-22882-A-44.wav",
+      "name": "1-22882-A-44.wav",
+      "category": "engine",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: engine"
+    },
+    {
+      "file_id": "ESC_25",
+      "relative_path": "ESC50/chainsaw/1-116765-A-41.wav",
+      "name": "1-116765-A-41.wav",
+      "category": "chainsaw",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: chainsaw"
+    },
+    {
+      "file_id": "ESC_26",
+      "relative_path": "ESC50/chainsaw/1-19898-A-41.wav",
+      "name": "1-19898-A-41.wav",
+      "category": "chainsaw",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: chainsaw"
+    },
+    {
+      "file_id": "ESC_27",
+      "relative_path": "ESC50/chainsaw/1-19898-B-41.wav",
+      "name": "1-19898-B-41.wav",
+      "category": "chainsaw",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: chainsaw"
+    },
+    {
+      "file_id": "ESC_28",
+      "relative_path": "ESC50/siren/1-31482-A-42.wav",
+      "name": "1-31482-A-42.wav",
+      "category": "siren",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: siren"
+    },
+    {
+      "file_id": "ESC_29",
+      "relative_path": "ESC50/siren/1-31482-B-42.wav",
+      "name": "1-31482-B-42.wav",
+      "category": "siren",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: siren"
+    },
+    {
+      "file_id": "ESC_30",
+      "relative_path": "ESC50/siren/1-54084-A-42.wav",
+      "name": "1-54084-A-42.wav",
+      "category": "siren",
+      "dataset": "ESC-50",
+      "duration_seconds": 5.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Real environmental audio: siren"
+    },
+    {
+      "file_id": "CLO_01",
+      "relative_path": "Clotho/Distorted AM Radio noise.wav",
+      "name": "Distorted AM Radio noise.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 26.16,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A muddled noise of broken channel of the TV",
+      "all_human_captions": [
+        "A muddled noise of broken channel of the TV",
+        "A television blares the rhythm of a static TV.",
+        "Loud television static dips in and out of focus",
+        "The loud buzz of static constantly changes pitch and volume.",
+        "heavy static and the beginnings of a signal on a transistor radio"
+      ]
+    },
+    {
+      "file_id": "CLO_02",
+      "relative_path": "Clotho/Paper_Parchment_Rustling.wav",
+      "name": "Paper_Parchment_Rustling.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 26.56,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A person is turning a map over and over.",
+      "all_human_captions": [
+        "A person is turning a map over and over.",
+        "A person is very carefully rapping a gift for someone else.",
+        "A person is very carefully wrapping a gift for someone else.",
+        "He sighed as he turned the pages of the book, stopping to scan the information.",
+        "papers are being turned, stopped, then turned again and someone is breathing."
+      ]
+    },
+    {
+      "file_id": "CLO_03",
+      "relative_path": "Clotho/03 Whales Slowing Down.wav",
+      "name": "03 Whales Slowing Down.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 24.32,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Several barnyard animals mooing in a barn while it rains outside.",
+      "all_human_captions": [
+        "Several barnyard animals mooing in a barn while it rains outside.",
+        "The vocalization of several whales, along with the clicking of large numbers of shrimp, reverberated below in the water.",
+        "Underwater, large numbers of shrimp clicking and several whales vocalizing.",
+        "Whales sing to one another over the flowing water in the distance.",
+        "wales sing to one another with water flowing in the background"
+      ]
+    },
+    {
+      "file_id": "CLO_04",
+      "relative_path": "Clotho/Rope tied to boat in port.wav",
+      "name": "Rope tied to boat in port.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 24.98,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "An office chair is squeaking as someone bends back and forth in it.",
+      "all_human_captions": [
+        "An office chair is squeaking as someone bends back and forth in it.",
+        "Popping and squeaking gradually tapers off to a low level.",
+        "Someone is opening a creaky door slowly while a dog barks in the background",
+        "Squeaking and popping followed by gradual popping and tapering off.",
+        "an office chair is squeaking as someone leans forward and backward in it"
+      ]
+    },
+    {
+      "file_id": "CLO_05",
+      "relative_path": "Clotho/carpenter bee.wav",
+      "name": "carpenter bee.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 20.82,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A flying bee is buzzing loudly around an object and its wing hits it.",
+      "all_human_captions": [
+        "A flying bee is buzzing loudly around an object and its wing hits it.",
+        "An annoying fly is buzzing loudly and consistently.",
+        "An insect buzzing in the foreground as birds chirp in the background.",
+        "An insect trapped in a spider web struggles, breaks free and flies away.",
+        "Outdoors, insect trapped in a spider web and then breaks loose and flies away."
+      ]
+    },
+    {
+      "file_id": "CLO_06",
+      "relative_path": "Clotho/violin1.wav",
+      "name": "violin1.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 27.21,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A bow playing a stringed instrument in a one note tone repeatedly before violins join to create the melody.",
+      "all_human_captions": [
+        "A bow playing a stringed instrument in a one note tone repeatedly before violins join to create the melody.",
+        "A low stringed instrument drones a steady tone and is eventually joined by violins.",
+        "A large stringed instrument and a pair of violins are playing.",
+        "A musical instrument creates a tune and is followed by other instruments.",
+        "An orchestra practicing for an upcoming concert in an enclosed room."
+      ]
+    },
+    {
+      "file_id": "CLO_07",
+      "relative_path": "Clotho/121006_rainampstorm.wav",
+      "name": "121006_rainampstorm.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 22.56,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "As thunder claps far in the distance, the rain pours down.",
+      "all_human_captions": [
+        "As thunder claps far in the distance, the rain pours down.",
+        "Rain pours down and thunder claps far in the distance.",
+        "Substantial rain and wind are pouring and spouting around and thunder is available.",
+        "The rain falls down the thunder is rumbling as someone is pounding and a car passes.",
+        "The rain falls down while someone is pounding, a car passes by and the thunder is rumbling"
+      ]
+    },
+    {
+      "file_id": "CLO_08",
+      "relative_path": "Clotho/draaiorgel2.wav",
+      "name": "draaiorgel2.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 26.65,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Something goes round that is playing its song.",
+      "all_human_captions": [
+        "Something goes round that is playing its song.",
+        "At the fair, music is playing near a carousel through the speaker.",
+        "Chiming of bells, whistles and horns at a performance.",
+        "Fair kind music is being played at the circus grounds.",
+        "Polka or fair kind of music is being played."
+      ]
+    },
+    {
+      "file_id": "CLO_09",
+      "relative_path": "Clotho/Officejet Printer.wav",
+      "name": "Officejet Printer.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 29.02,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A paper printer is printing off multiple pages.",
+      "all_human_captions": [
+        "A paper printer is printing off multiple pages.",
+        "A printer printing off multiple pages of paper",
+        "A small printing device performing duties and printing pages of text.",
+        "A tiny printer performs its duties and prints the words.",
+        "An automatic cutter feeds paper and cuts it."
+      ]
+    },
+    {
+      "file_id": "CLO_10",
+      "relative_path": "Clotho/Stockholm subway C20 train departing.wav",
+      "name": "Stockholm subway C20 train departing.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 25.47,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A buzzer warns of departure, a air brake is released, while a roller coaster ride takes off.",
+      "all_human_captions": [
+        "A buzzer warns of departure, a air brake is released, while a roller coaster ride takes off.",
+        "A horn beeps for an amusement park ride, air brakes release and the ride takes off.",
+        "A warning button sounds, then a vehicle goes at a high speed.",
+        "After a horn beeps for an amusement park ride, the air brakes release and the ride begins.",
+        "First comes a beeping sound, then a door closing, then the train starts to speed up."
+      ]
+    },
+    {
+      "file_id": "CLO_11",
+      "relative_path": "Clotho/metalTunnel.wav",
+      "name": "metalTunnel.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 25.05,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A very robotic synth modulates and reverberates within itself",
+      "all_human_captions": [
+        "A very robotic synth modulates and reverberates within itself",
+        "An interesting instrument whose sound is going up and down.",
+        "The synth is reverberated at an rhythmic meter",
+        "it is like a iron rod cutting sound and it is a workshop",
+        "it is like an iron rod cutting sound and it is a workshop"
+      ]
+    },
+    {
+      "file_id": "CLO_12",
+      "relative_path": "Clotho/Ambience Night crickets.wav",
+      "name": "Ambience Night crickets.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 25.14,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A serene bit of nightfall is met by crickets chirping",
+      "all_human_captions": [
+        "A serene bit of nightfall is met by crickets chirping",
+        "Crickets chirp in the background as a soft wind blows.",
+        "Crickets chirping outdoors at night with a gentle breeze blowing.",
+        "In the calmness of nightfall, crickets are chirping.",
+        "While the wind softly blows, crickets chirp in the background."
+      ]
+    },
+    {
+      "file_id": "CLO_13",
+      "relative_path": "Clotho/Maria Hernandez Park September 1st.wav",
+      "name": "Maria Hernandez Park September 1st.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 25.99,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A skateboarder is coasting on his board on a back and forth ramp as voices talk in the background.",
+      "all_human_captions": [
+        "A skateboarder is coasting on his board on a back and forth ramp as voices talk in the background.",
+        "A skateboarder rides his board up and down a ramp as people speak in the background.",
+        "People skateboard with some children who are faintly speaking.",
+        "Boards with small wheels are being ridden while children are quietly speaking.",
+        "People skateboard around at the park while chatting and laughing."
+      ]
+    },
+    {
+      "file_id": "CLO_14",
+      "relative_path": "Clotho/Traffic Light.wav",
+      "name": "Traffic Light.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 22.29,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A group of people is standing on the street near a busy freeway.",
+      "all_human_captions": [
+        "A group of people is standing on the street near a busy freeway.",
+        "A group of people standing on the street near a busy freeway.",
+        "A detector device is operating and detecting nothing and then it registers some activity.",
+        "An electric machine is operating and detecting nothing and then it suddenly detects some activity.",
+        "Unidentified squeaking occurs several times while men talk in the background."
+      ]
+    },
+    {
+      "file_id": "CLO_15",
+      "relative_path": "Clotho/jettish.wav",
+      "name": "jettish.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 26.13,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A sweeping swaying sound rising upward repeatedly, then going downward repeatedly.",
+      "all_human_captions": [
+        "A sweeping swaying sound rising upward repeatedly, then going downward repeatedly.",
+        "A sweeping swishing sound becomes louder and fades repeatedly.",
+        "Heavily distorted siren sounds make them sound like spacecraft.",
+        "They sound like a spacecraft when their siren sounds are highly distorted.",
+        "fancy alarm or alert system that is constantly going off"
+      ]
+    },
+    {
+      "file_id": "CLO_16",
+      "relative_path": "Clotho/broken comms2.wav",
+      "name": "broken comms2.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 20.15,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A radio cycling through stations as it is being repaired.",
+      "all_human_captions": [
+        "A radio cycling through stations as it is being repaired.",
+        "A radio that is trying to be tuned and fixed.",
+        "A series of bleeps and bloops fire off randomly.",
+        "The computer is beeping as a voice recording drags .",
+        "Various computer noises go off as a voice call breaks up"
+      ]
+    },
+    {
+      "file_id": "CLO_17",
+      "relative_path": "Clotho/wind3.wav",
+      "name": "wind3.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 24.62,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "Air is being forced through a small opening and almost making whistling noises.",
+      "all_human_captions": [
+        "Air is being forced through a small opening and almost making whistling noises.",
+        "The wind howled violently and shrilly then began to taper off.",
+        "The wind is blowing through the corn field very loudly.",
+        "The wind is heard whistling outside from inside.",
+        "Wind howls violently and shrilly then begins to taper off."
+      ]
+    },
+    {
+      "file_id": "CLO_18",
+      "relative_path": "Clotho/Drinking Through Straw.wav",
+      "name": "Drinking Through Straw.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 29.62,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A cold, icy drink is stirred and then sipped through a straw until it is gone.",
+      "all_human_captions": [
+        "A cold, icy drink is stirred and then sipped through a straw until it is gone.",
+        "A person is pouring a drink and then taking a sip.",
+        "A stone object rubs and hits against another object",
+        "A straw is moving and audible as it whirls around the bottom of the drain.",
+        "Someone is stirring a drink with ice cubes in it and starts drinking with a straw until empty."
+      ]
+    },
+    {
+      "file_id": "CLO_19",
+      "relative_path": "Clotho/the swarm v31m3.wav",
+      "name": "the swarm v31m3.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 27.0,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A built up sound comprised of whining, chirping and other sounds that slowly dies off.",
+      "all_human_captions": [
+        "A built up sound comprised of whining, chirping and other sounds that slowly dies off.",
+        "A built up sound comprised of whirring, chirping and other sounds that slowly dies off.",
+        "A noisy vacuum cleaner is used in a confined space.",
+        "A vacuum cleaner with noisy bearings being used in a confined space.",
+        "Cranking noises turn to a low screeching that rises in volume until it is extremely loud."
+      ]
+    },
+    {
+      "file_id": "CLO_20",
+      "relative_path": "Clotho/Giant 1.wav",
+      "name": "Giant 1.wav",
+      "category": "Clotho-DCASE",
+      "dataset": "Clotho",
+      "duration_seconds": 18.12,
+      "sample_rate": 44100,
+      "channels": 1,
+      "description": "A person gurgling, while trying to ape speech patterns, with some soft, occasional metal clanking in the background.",
+      "all_human_captions": [
+        "A person gurgling, while trying to ape speech patterns, with some soft, occasional metal clanking in the background.",
+        "A person gurgling, while trying to mimic speech patterns, with some soft, intermittent metal clanging in the background.",
+        "A person is making weird noises with his or her mouth.",
+        "A person is speaking and is hard to understand.",
+        "A person who has a hole in their neck is talking and they are hard to understand."
+      ]
+    }
+  ]
+}
