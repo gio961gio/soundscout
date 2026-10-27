@@ -14,10 +14,10 @@
 | Metrica | Risultato | Note |
 |---|---|---|
 | File totali indicizzati | **36** | WAV 48 kHz mono / segmenti 10s |
-| Tempo prima indicizzazione | **12.23s** | Throughput: **2.9 file/s** su CPU |
-| Tempo re-indicizzazione (cache) | **125.9 ms** | 100% riuso vettori invariati |
-| Latenza mediana query | **78.4 ms** | Embedding testo + cosine search NumPy |
-| Latenza 95° percentile (p95) | **107.2 ms** | Calcolata su 20 query |
+| Tempo prima indicizzazione | **13.48s** | Throughput: **2.7 file/s** su CPU |
+| Tempo re-indicizzazione (cache) | **138.2 ms** | 100% riuso vettori invariati |
+| Latenza mediana query | **80.0 ms** | Embedding testo + cosine search NumPy |
+| Latenza 95° percentile (p95) | **102.3 ms** | Calcolata su 20 query |
 
 ## 3. Metriche di Retrieval Complessive
 | Metrica | Punteggio | Definizione |

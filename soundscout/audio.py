@@ -26,6 +26,14 @@ class AudioData:
     file_format: str
 
 
+@dataclass
+class TimedSegment:
+    audio: np.ndarray
+    start_seconds: float
+    end_seconds: float
+    segment_index: int
+
+
 def _ffprobe_metadata(path: Path) -> dict:
     if not shutil.which("ffprobe"):
         raise RuntimeError(
@@ -115,9 +123,60 @@ def load_audio(path: str | Path, target_sample_rate: int = TARGET_SAMPLE_RATE) -
     )
 
 
+def audio_segments_timed(
+    audio: np.ndarray,
+    sample_rate: int = TARGET_SAMPLE_RATE,
+    segment_seconds: float = MAX_CLAP_SECONDS,
+    hop_seconds: float = 5.0,
+    max_segments: int = 12,
+) -> list[TimedSegment]:
+    """Return sequential windows with exact start and end timestamps (seconds)."""
+    audio = np.asarray(audio, dtype=np.float32).reshape(-1)
+    if audio.size == 0:
+        raise ValueError("Il file audio è vuoto.")
+    total_samples = len(audio)
+    duration = total_samples / float(sample_rate)
+    window_samples = max(1, int(sample_rate * segment_seconds))
+
+    if total_samples <= window_samples:
+        return [
+            TimedSegment(
+                audio=audio,
+                start_seconds=0.0,
+                end_seconds=round(duration, 3),
+                segment_index=0,
+            )
+        ]
+
+    hop_samples = max(1, int(sample_rate * hop_seconds))
+    segments: list[TimedSegment] = []
+    start = 0
+    seg_idx = 0
+
+    while start < total_samples and seg_idx < max_segments:
+        end = min(start + window_samples, total_samples)
+        seg_audio = audio[start:end]
+        start_sec = round(start / float(sample_rate), 3)
+        end_sec = round(end / float(sample_rate), 3)
+        segments.append(
+            TimedSegment(
+                audio=seg_audio,
+                start_seconds=start_sec,
+                end_seconds=end_sec,
+                segment_index=seg_idx,
+            )
+        )
+        seg_idx += 1
+        if end >= total_samples:
+            break
+        start += hop_samples
+
+    return segments
+
+
 def audio_segments(audio: np.ndarray, sample_rate: int = TARGET_SAMPLE_RATE,
                    segment_seconds: int = MAX_CLAP_SECONDS, max_segments: int = 3) -> list[np.ndarray]:
-    """Return up to three 10-second windows across the file for robust indexing."""
+    """Return up to three 10-second windows across the file for robust indexing (legacy compatibility)."""
     audio = np.asarray(audio, dtype=np.float32).reshape(-1)
     if audio.size == 0:
         raise ValueError("Il file audio è vuoto.")
@@ -134,7 +193,7 @@ def audio_segments(audio: np.ndarray, sample_rate: int = TARGET_SAMPLE_RATE,
     return [audio[start:start + window] for start in unique_starts]
 
 
-def waveform_minmax(path: str | Path, bins: int = 500, max_seconds: int = 30) -> tuple[np.ndarray, np.ndarray] | None:
+def waveform_minmax(path: str | Path, bins: int = 500, max_seconds: int = 120) -> tuple[np.ndarray, np.ndarray] | None:
     """Create a compact min/max waveform preview without loading an unlimited duration."""
     path = Path(path)
     try:

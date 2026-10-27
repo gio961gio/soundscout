@@ -49,17 +49,35 @@ def mime_for(path: str) -> str:
     }.get(ext, "audio/wav")
 
 
-def show_waveform(path: str, key: str) -> None:
+def show_waveform(
+    path: str,
+    key: str,
+    match_start: float | None = None,
+    match_end: float | None = None,
+) -> None:
     waveform = waveform_minmax(path)
     if waveform is None:
         st.caption("Waveform preview unavailable for this format.")
         return
     x, bounds = waveform
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=x, y=bounds[:, 1], mode="lines", line={"width": 1}, name="Peak", hoverinfo="skip"))
-    fig.add_trace(go.Scatter(x=x, y=bounds[:, 0], mode="lines", line={"width": 1}, fill="tonexty", name="Trough", hoverinfo="skip"))
+    fig.add_trace(go.Scatter(x=x, y=bounds[:, 1], mode="lines", line={"width": 1, "color": "#4a90e2"}, name="Peak", hoverinfo="skip"))
+    fig.add_trace(go.Scatter(x=x, y=bounds[:, 0], mode="lines", line={"width": 1, "color": "#4a90e2"}, fill="tonexty", fillcolor="rgba(74, 144, 226, 0.22)", name="Trough", hoverinfo="skip"))
+
+    if match_start is not None and match_end is not None and match_end > match_start:
+        fig.add_vrect(
+            x0=match_start,
+            x1=match_end,
+            fillcolor="rgba(255, 152, 0, 0.30)",
+            line_width=1.5,
+            line_color="#ff9800",
+            annotation_text="Match",
+            annotation_position="top left",
+            annotation_font={"size": 9, "color": "#ff9800"},
+        )
+
     fig.update_layout(
-        height=105, margin={"l": 0, "r": 0, "t": 5, "b": 20},
+        height=110, margin={"l": 0, "r": 0, "t": 8, "b": 20},
         showlegend=False, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         xaxis_title="Seconds", yaxis_title="Amplitude", font={"size": 10},
     )
@@ -203,20 +221,28 @@ for rank, item in enumerate(filtered[:30], start=1):
     with score_col:
         st.metric("Cosine score", f"{item['similarity']:.3f}")
 
+    match_s = float(item.get("match_start_seconds", 0.0))
+    match_e = float(item.get("match_end_seconds", item.get("duration_seconds", 0.0)))
+    total_segs = int(item.get("total_segments", 1))
+    seg_idx = int(item.get("match_segment_index", 0))
+
     details = st.columns(4)
     details[0].caption(f"Duration: **{format_duration(item.get('duration_seconds', 0))}**")
-    details[1].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
-    details[2].caption(f"Channels: **{item.get('channels', 0)}**")
-    details[3].caption(f"Category: **{item.get('category', 'Uncategorized')}**")
+    details[1].caption(f"Best match: **{format_duration(match_s)} – {format_duration(match_e)}**")
+    details[2].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
+    details[3].caption(f"Segment: **{seg_idx + 1} / {total_segs}**")
 
     left, right = st.columns([1, 1.6])
     with left:
         try:
-            st.audio(path, format=mime_for(path))
+            start_offset = int(match_s) if total_segs > 1 else 0
+            st.audio(path, format=mime_for(path), start_time=start_offset)
+            if total_segs > 1:
+                st.caption(f"🎯 Salient event starts at **{format_duration(match_s)}**")
         except Exception:
             st.caption("Audio preview is not available in this browser for this format.")
     with right:
-        show_waveform(path, key=f"{rank}-{abs(hash(path))}")
+        show_waveform(path, key=f"{rank}-{abs(hash(path))}", match_start=match_s, match_end=match_e)
     st.divider()
 
 if len(filtered) > 30:

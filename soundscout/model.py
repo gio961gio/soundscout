@@ -29,7 +29,10 @@ class ClapEmbedder:
             raise RuntimeError(f"Il modello CLAP non ha restituito un embedding {modality} utilizzabile.")
         return value
 
-    def embed_audio(self, segments: list[np.ndarray], sample_rate: int = 48_000) -> np.ndarray:
+    def embed_audio_segments(self, segments: list[np.ndarray], sample_rate: int = 48_000) -> np.ndarray:
+        """Compute individual normalized L2 embeddings for each segment -> shape (num_segments, 512)."""
+        if not segments:
+            return np.empty((0, 512), dtype=np.float32)
         try:
             inputs = self.processor(audio=segments, sampling_rate=sample_rate, return_tensors="pt", padding=True)
         except TypeError:
@@ -39,9 +42,16 @@ class ClapEmbedder:
             output = self.model.get_audio_features(**inputs)
             features = self._as_embedding(output, "audio")
             features = F.normalize(features.float(), p=2, dim=-1)
-            mean_embedding = features.mean(dim=0, keepdim=True)
-            mean_embedding = F.normalize(mean_embedding, p=2, dim=-1)
-        return mean_embedding[0].detach().cpu().numpy().astype(np.float32)
+        return features.detach().cpu().numpy().astype(np.float32)
+
+    def embed_audio(self, segments: list[np.ndarray], sample_rate: int = 48_000) -> np.ndarray:
+        """Pool all segment embeddings to a single mean vector (legacy compatibility)."""
+        matrix = self.embed_audio_segments(segments, sample_rate)
+        if matrix.shape[0] == 0:
+            return np.zeros(512, dtype=np.float32)
+        mean_embedding = matrix.mean(axis=0, keepdims=True)
+        norm = max(float(np.linalg.norm(mean_embedding)), 1e-12)
+        return (mean_embedding[0] / norm).astype(np.float32)
 
     def embed_text(self, text: str) -> np.ndarray:
         inputs = self.processor(text=[text], return_tensors="pt", padding=True, truncation=True)
