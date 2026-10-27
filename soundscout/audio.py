@@ -75,27 +75,32 @@ def load_audio(path: str | Path, target_sample_rate: int = TARGET_SAMPLE_RATE) -
                 int(source_sr) // divisor,
             ).astype(np.float32, copy=False)
     except (RuntimeError, sf.LibsndfileError) as exc:
-        if path.suffix.lower() != ".mp3" or not shutil.which("ffmpeg"):
+        if path.suffix.lower() == ".mp3" and shutil.which("ffmpeg"):
+            metadata = _ffprobe_metadata(path)
+            proc = subprocess.run(
+                [
+                    "ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le",
+                    "-acodec", "pcm_f32le", "-ar", str(target_sample_rate), "-ac", "1", "pipe:1",
+                ],
+                capture_output=True, check=False,
+            )
+            if proc.returncode != 0:
+                raise RuntimeError(proc.stderr.decode("utf-8", errors="ignore") or "Decodifica MP3 fallita.")
+            mono = np.frombuffer(proc.stdout, dtype="<f4").copy()
+            source_sr = metadata["sample_rate"]
+            channels = metadata["channels"]
+            duration = metadata["duration"]
+            frames = int(round(duration * source_sr))
+            fmt = "mp3"
+        elif path.suffix.lower() == ".mp3":
             raise RuntimeError(
                 f"Non riesco a decodificare {path.name}. "
                 "Per MP3 installa FFmpeg, oppure converti il file in WAV/FLAC."
             ) from exc
-        metadata = _ffprobe_metadata(path)
-        proc = subprocess.run(
-            [
-                "ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le",
-                "-acodec", "pcm_f32le", "-ar", str(target_sample_rate), "-ac", "1", "pipe:1",
-            ],
-            capture_output=True, check=False,
-        )
-        if proc.returncode != 0:
-            raise RuntimeError(proc.stderr.decode("utf-8", errors="ignore") or "Decodifica MP3 fallita.")
-        mono = np.frombuffer(proc.stdout, dtype="<f4").copy()
-        source_sr = metadata["sample_rate"]
-        channels = metadata["channels"]
-        duration = metadata["duration"]
-        frames = int(round(duration * source_sr))
-        fmt = "mp3"
+        else:
+            raise RuntimeError(
+                f"Non riesco a decodificare {path.name}: file corrotto o formato non supportato da libsndfile."
+            ) from exc
 
     if mono.size == 0:
         raise ValueError("Il file audio è vuoto.")

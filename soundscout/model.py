@@ -30,7 +30,10 @@ class ClapEmbedder:
         return value
 
     def embed_audio(self, segments: list[np.ndarray], sample_rate: int = 48_000) -> np.ndarray:
-        inputs = self.processor(audios=segments, sampling_rate=sample_rate, return_tensors="pt", padding=True)
+        try:
+            inputs = self.processor(audio=segments, sampling_rate=sample_rate, return_tensors="pt", padding=True)
+        except TypeError:
+            inputs = self.processor(audios=segments, sampling_rate=sample_rate, return_tensors="pt", padding=True)
         inputs = inputs.to(self.device)
         with torch.inference_mode():
             output = self.model.get_audio_features(**inputs)

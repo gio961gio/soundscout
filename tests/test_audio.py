@@ -79,3 +79,60 @@ def test_index_reuses_embeddings_for_unchanged_files(tmp_path, monkeypatch):
     records, vectors = saved
     assert records[0]["name"] == "tone.wav"
     assert vectors.shape == (1, 3)
+
+
+def test_audio_segments_empty_raises_value_error():
+    import pytest
+    with pytest.raises(ValueError, match="vuoto"):
+        audio_segments(np.array([], dtype=np.float32))
+
+
+def test_rank_by_text_empty_query_or_empty_records():
+    embedder = FakeEmbedder()
+    assert rank_by_text("", [{"name": "a"}], np.array([[1.0, 0.0]]), embedder) == []
+    assert rank_by_text("   ", [{"name": "a"}], np.array([[1.0, 0.0]]), embedder) == []
+    assert rank_by_text("query", [], np.array([]), embedder) == []
+
+
+def test_index_raises_on_nonexistent_or_empty_dir(tmp_path):
+    from soundscout import index as index_module
+    import pytest
+
+    # Nonexistent
+    with pytest.raises(ValueError, match="non esiste o non è una directory"):
+        index_module.build_or_update_index(tmp_path / "does_not_exist", FakeEmbedder())
+
+    # Empty
+    empty_dir = tmp_path / "empty"
+    empty_dir.mkdir()
+    with pytest.raises(ValueError, match="Non ho trovato file supportati"):
+        index_module.build_or_update_index(empty_dir, FakeEmbedder())
+
+
+def test_index_handles_corrupted_file_gracefully(tmp_path, monkeypatch):
+    import soundfile as sf
+    from soundscout import index as index_module
+
+    class DummyAudioEmbedder:
+        def embed_audio(self, segments, sample_rate):
+            return np.array([0.5, 0.5], dtype=np.float32)
+
+    library = tmp_path / "mixed_library"
+    library.mkdir()
+
+    # Valid audio
+    signal = (0.1 * np.sin(2 * np.pi * 440 * np.arange(4800) / 48000)).astype(np.float32)
+    sf.write(library / "valid.wav", signal, 48000)
+
+    # Corrupted audio file with .wav extension
+    corrupt_file = library / "broken.wav"
+    corrupt_file.write_bytes(b"CORRUPTED_NOT_A_VALID_RIFF_HEADER")
+
+    monkeypatch.setattr(index_module, "CACHE_ROOT", tmp_path / "cache")
+    stats = index_module.build_or_update_index(library, DummyAudioEmbedder())
+
+    assert stats["indexed"] == 1
+    assert stats["embedded_now"] == 1
+    assert len(stats["errors"]) == 1
+    assert "broken.wav" in stats["errors"][0]["file"]
+
