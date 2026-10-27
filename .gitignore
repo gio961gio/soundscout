@@ -3,5 +3,6 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+argon_feedback*.md
 .streamlit/secrets.toml
 .DS_Store
