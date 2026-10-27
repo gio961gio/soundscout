@@ -63,8 +63,9 @@ def rank_by_text(query: str, records: list[dict[str, Any]], vectors: np.ndarray,
 def filter_results(results: list[dict[str, Any]], *, min_duration: float = 0.0,
                    max_duration: float = float("inf"), sample_rates: list[int] | None = None,
                    extensions: list[str] | None = None, channels: list[int] | None = None,
-                   categories: list[str] | None = None) -> list[dict[str, Any]]:
+                   categories: list[str] | None = None, keyword: str | None = None) -> list[dict[str, Any]]:
     filtered = []
+    kw = keyword.strip().lower() if keyword and keyword.strip() else None
     for item in results:
         duration = float(item.get("duration_seconds", 0.0))
         if not (min_duration <= duration <= max_duration):
@@ -77,5 +78,10 @@ def filter_results(results: list[dict[str, Any]], *, min_duration: float = 0.0,
             continue
         if categories and item.get("category", "Uncategorized") not in categories:
             continue
+        if kw:
+            name = str(item.get("name", "")).lower()
+            rel = str(item.get("relative_path", "")).lower()
+            if kw not in name and kw not in rel:
+                continue
         filtered.append(item)
     return filtered

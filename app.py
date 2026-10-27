@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from soundscout.audio import SUPPORTED_EXTENSIONS, waveform_minmax
+from soundscout.export import results_to_csv
 from soundscout.index import build_or_update_index, load_saved_index
 from soundscout.model import ClapEmbedder
 from soundscout.search import filter_results, rank_by_text
@@ -159,94 +160,185 @@ with st.sidebar:
         "Duration (seconds)", min_value=0.0, max_value=max(1.0, float(np.ceil(max_duration_all))),
         value=(0.0, max(1.0, float(np.ceil(max_duration_all)))), step=0.5,
     )
+    keyword_filter = st.text_input("Filter by filename/keyword", value="", placeholder="e.g. reverb, metallic, 01")
     selected_sample_rates = st.multiselect("Sample rate", options=sample_rates_all, default=[])
     selected_extensions = st.multiselect("Format", options=extensions_all, default=[])
     selected_channels = st.multiselect("Channels", options=channels_all, default=[])
     selected_categories = st.multiselect("Top-level folder", options=categories_all, default=[])
 
-col_a, col_b, col_c = st.columns([3, 1, 1])
+shortlist: dict[str, dict] = st.session_state.setdefault("shortlist", {})
+
+col_a, col_b, col_c, col_d = st.columns([2.5, 1, 1, 1])
 with col_a:
     st.metric("Indexed audio files", len(records))
 with col_b:
     st.metric("Formats", len(extensions_all))
 with col_c:
     st.metric("Folders / categories", len(categories_all))
+with col_d:
+    st.metric("Shortlisted sounds", len(shortlist))
 
-with st.form("search_form", clear_on_submit=False):
-    query = st.text_input(
-        "Describe the sound you want",
-        value=st.session_state.get("search_query", ""),
-        placeholder="e.g. distant metallic impact with long reverb",
-        help="CLAP works best with concise descriptive prompts. English queries are a useful starting point.",
-    )
-    search_clicked = st.form_submit_button("Search sounds", type="primary", use_container_width=True)
-if search_clicked:
-    st.session_state["search_query"] = query.strip()
+tab_search, tab_shortlist = st.tabs(["🔍 Search Sounds", f"⭐ Session Shortlist ({len(shortlist)})"])
 
-active_query = st.session_state.get("search_query", "")
-if not active_query:
-    st.caption("Tip: describe texture, distance, space, material and action — not just a broad category.")
-    st.stop()
+with tab_search:
+    with st.form("search_form", clear_on_submit=False):
+        query = st.text_input(
+            "Describe the sound you want",
+            value=st.session_state.get("search_query", ""),
+            placeholder="e.g. distant metallic impact with long reverb",
+            help="CLAP works best with concise descriptive prompts. English queries are a useful starting point.",
+        )
+        search_clicked = st.form_submit_button("Search sounds", type="primary", use_container_width=True)
+    if search_clicked:
+        st.session_state["search_query"] = query.strip()
 
-try:
-    with st.spinner("Comparing your query with the indexed sounds…"):
-        embedder = get_embedder()
-        ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
-    filtered = filter_results(
-        ranked,
-        min_duration=float(duration_range[0]),
-        max_duration=float(duration_range[1]),
-        sample_rates=selected_sample_rates,
-        extensions=selected_extensions,
-        channels=selected_channels,
-        categories=selected_categories,
-    )
-except Exception as exc:
-    st.error(f"Search failed: {exc}")
-    st.stop()
-
-st.markdown(f"### Results for *{active_query}*")
-st.caption(f"{len(filtered)} result(s) match the current filters. Similarity is a ranking score, not a probability.")
-
-if not filtered:
-    st.warning("No files match these filters. Widen the duration or metadata filters and try again.")
-    st.stop()
-
-for rank, item in enumerate(filtered[:30], start=1):
-    path = str(item["path"])
-    title_col, score_col = st.columns([5, 1])
-    with title_col:
-        st.markdown(f"#### {rank}. {item.get('name', Path(path).name)}")
-        st.caption(item.get("relative_path", path))
-    with score_col:
-        st.metric("Cosine score", f"{item['similarity']:.3f}")
-
-    match_s = float(item.get("match_start_seconds", 0.0))
-    match_e = float(item.get("match_end_seconds", item.get("duration_seconds", 0.0)))
-    total_segs = int(item.get("total_segments", 1))
-    seg_idx = int(item.get("match_segment_index", 0))
-
-    details = st.columns(4)
-    details[0].caption(f"Duration: **{format_duration(item.get('duration_seconds', 0))}**")
-    details[1].caption(f"Best match: **{format_duration(match_s)} – {format_duration(match_e)}**")
-    details[2].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
-    details[3].caption(f"Segment: **{seg_idx + 1} / {total_segs}**")
-
-    left, right = st.columns([1, 1.6])
-    with left:
+    active_query = st.session_state.get("search_query", "")
+    if not active_query:
+        st.caption("Tip: describe texture, distance, space, material and action — not just a broad category.")
+    else:
         try:
-            start_offset = int(match_s) if total_segs > 1 else 0
-            st.audio(path, format=mime_for(path), start_time=start_offset)
-            if total_segs > 1:
-                st.caption(f"🎯 Salient event starts at **{format_duration(match_s)}**")
-        except Exception:
-            st.caption("Audio preview is not available in this browser for this format.")
-    with right:
-        show_waveform(path, key=f"{rank}-{abs(hash(path))}", match_start=match_s, match_end=match_e)
-    st.divider()
+            with st.spinner("Comparing your query with the indexed sounds…"):
+                embedder = get_embedder()
+                ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
+            filtered = filter_results(
+                ranked,
+                min_duration=float(duration_range[0]),
+                max_duration=float(duration_range[1]),
+                sample_rates=selected_sample_rates,
+                extensions=selected_extensions,
+                channels=selected_channels,
+                categories=selected_categories,
+                keyword=keyword_filter,
+            )
+        except Exception as exc:
+            st.error(f"Search failed: {exc}")
+            st.stop()
 
-if len(filtered) > 30:
-    st.caption("Showing the first 30 results. Narrow the query or filters to refine the list.")
+        res_header_col, export_col = st.columns([3.5, 1.5])
+        with res_header_col:
+            st.markdown(f"### Results for *{active_query}*")
+            st.caption(f"{len(filtered)} result(s) match the current filters. Similarity is a ranking score, not a probability.")
+        with export_col:
+            if filtered:
+                # Add current search query to results for export tracking
+                results_with_query = [dict(item, query=active_query) for item in filtered]
+                st.download_button(
+                    "📥 Export Results (CSV)",
+                    data=results_to_csv(results_with_query).encode("utf-8-sig"),
+                    file_name="soundscout_search_results.csv",
+                    mime="text/csv",
+                    use_container_width=True,
+                )
+
+        if not filtered:
+            st.warning("No files match these filters. Widen the duration or metadata filters and try again.")
+        else:
+            for rank, item in enumerate(filtered[:30], start=1):
+                path = str(item["path"])
+                title_col, score_col = st.columns([5, 1])
+                with title_col:
+                    t_col, fav_col = st.columns([4, 1.2])
+                    with t_col:
+                        st.markdown(f"#### {rank}. {item.get('name', Path(path).name)}")
+                        st.caption(item.get("relative_path", path))
+                    with fav_col:
+                        is_fav = path in shortlist
+                        if is_fav:
+                            if st.button("⭐ In Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Remove from session shortlist"):
+                                del shortlist[path]
+                                st.rerun()
+                        else:
+                            if st.button("☆ Add to Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Add to session shortlist"):
+                                item_to_save = dict(item)
+                                item_to_save["query"] = active_query
+                                shortlist[path] = item_to_save
+                                st.rerun()
+                with score_col:
+                    st.metric("Cosine score", f"{item['similarity']:.3f}")
+
+                match_s = float(item.get("match_start_seconds", 0.0))
+                match_e = float(item.get("match_end_seconds", item.get("duration_seconds", 0.0)))
+                total_segs = int(item.get("total_segments", 1))
+                seg_idx = int(item.get("match_segment_index", 0))
+
+                details = st.columns(4)
+                details[0].caption(f"Duration: **{format_duration(item.get('duration_seconds', 0))}**")
+                details[1].caption(f"Best match: **{format_duration(match_s)} – {format_duration(match_e)}**")
+                details[2].caption(f"Sample rate: **{item.get('sample_rate', 0):,} Hz**")
+                details[3].caption(f"Segment: **{seg_idx + 1} / {total_segs}**")
+
+                left, right = st.columns([1, 1.6])
+                with left:
+                    try:
+                        start_offset = int(match_s) if total_segs > 1 else 0
+                        st.audio(path, format=mime_for(path), start_time=start_offset)
+                        if total_segs > 1:
+                            st.caption(f"🎯 Salient event starts at **{format_duration(match_s)}**")
+                    except Exception:
+                        st.caption("Audio preview is not available in this browser for this format.")
+                with right:
+                    show_waveform(path, key=f"{rank}-{abs(hash(path))}", match_start=match_s, match_end=match_e)
+                st.divider()
+
+            if len(filtered) > 30:
+                st.caption("Showing the first 30 results. Narrow the query or filters to refine the list.")
+
+with tab_shortlist:
+    st.markdown("### ⭐ Session Shortlist")
+    st.caption("Collect candidate sounds during your session and export timecoded cue sheets directly for your DAW.")
+
+    if not shortlist:
+        st.info("Your shortlist is currently empty. Search for sounds and click **'☆ Add to Shortlist'** to collect candidates here.")
+    else:
+        top_s_col1, top_s_col2, top_s_col3 = st.columns([3, 1.2, 1])
+        with top_s_col1:
+            st.write(f"**{len(shortlist)} sound(s)** selected in this session.")
+        with top_s_col2:
+            st.download_button(
+                "📥 Export Shortlist (CSV)",
+                data=results_to_csv(list(shortlist.values())).encode("utf-8-sig"),
+                file_name="soundscout_shortlist.csv",
+                mime="text/csv",
+                type="primary",
+                use_container_width=True,
+            )
+        with top_s_col3:
+            if st.button("🗑️ Clear", use_container_width=True):
+                shortlist.clear()
+                st.rerun()
+
+        st.divider()
+
+        for s_idx, (s_path, s_item) in enumerate(list(shortlist.items()), start=1):
+            s_title_col, s_score_col = st.columns([5, 1])
+            with s_title_col:
+                st.markdown(f"#### {s_idx}. {s_item.get('name', Path(s_path).name)}")
+                query_info = f" · Prompt: *\"{s_item['query']}\"*" if s_item.get("query") else ""
+                st.caption(f"{s_item.get('relative_path', s_path)}{query_info}")
+            with s_score_col:
+                if st.button("❌ Remove", key=f"del-short-{s_idx}-{abs(hash(s_path))}"):
+                    del shortlist[s_path]
+                    st.rerun()
+
+            s_match_s = float(s_item.get("match_start_seconds", 0.0))
+            s_match_e = float(s_item.get("match_end_seconds", s_item.get("duration_seconds", 0.0)))
+
+            s_details = st.columns(4)
+            s_details[0].caption(f"Duration: **{format_duration(s_item.get('duration_seconds', 0))}**")
+            s_details[1].caption(f"Best match: **{format_duration(s_match_s)} – {format_duration(s_match_e)}**")
+            s_details[2].caption(f"Sample rate: **{s_item.get('sample_rate', 0):,} Hz**")
+            s_details[3].caption(f"Category: **{s_item.get('category', 'Uncategorized')}**")
+
+            s_left, s_right = st.columns([1, 1.6])
+            with s_left:
+                try:
+                    s_offset = int(s_match_s) if s_item.get("total_segments", 1) > 1 else 0
+                    st.audio(s_path, format=mime_for(s_path), start_time=s_offset)
+                except Exception:
+                    st.caption("Audio preview unavailable.")
+            with s_right:
+                show_waveform(s_path, key=f"short-{s_idx}-{abs(hash(s_path))}", match_start=s_match_s, match_end=s_match_e)
+            st.divider()
 
 with st.expander("About this MVP"):
     st.markdown(
