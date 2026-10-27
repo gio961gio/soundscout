@@ -10,6 +10,20 @@
 - Test per segmentazione, filtri, ranking e riuso embedding.
 - Documentazione per installazione, architettura e limiti.
 
+## Aggiornamento P1 — Dataset di Valutazione e Benchmark di Retrieval (27/10/2026)
+
+- Creato generatore dataset sintetico `scripts/generate_evaluation_dataset.py`: 36 file audio sintetizzati tramite DSP in 6 categorie professionali (`Impacts`, `Ambiences`, `Foley`, `Tones`, `Mechanical`, `Transitions`).
+- Strutturati i file di annotazione ground-truth `evaluation/manifest.json` (36 file con descrizioni e durata) ed `evaluation/queries.json` (20 query classificate per tipologia: material, ambience, foley, tone, mechanical, action).
+- Implementato modulo `soundscout/eval.py` per il calcolo delle metriche IR (`recall_at_k`, `precision_at_k`, `reciprocal_rank`, `evaluate_query`, `aggregate_retrieval_metrics`), testato esaustivamente in `tests/test_eval.py` (`13 passed in 2.51s`).
+- Creato ed eseguito runner di benchmark `scripts/benchmark_retrieval.py`:
+  - **Recall@5: 85.0%** (85% delle query recuperano il target nei primi 5 risultati).
+  - **Recall@3: 77.5%**, **Recall@1: 40.0%**.
+  - **MRR (Mean Reciprocal Rank): 0.6184**.
+  - **Latenza di ricerca:** 78.4 ms mediana, 107.2 ms p95.
+  - **Throughput indicizzazione:** 12.23s per 36 file (2.9 file/s su CPU), 125.9 ms con cache incrementale.
+- Output benchmark archiviato in `evaluation/benchmark_report.md` e `evaluation/benchmark_summary.json`.
+- Supervisione e audit con Argon superata con esito `STATUS: APPROVED` (integrato suggerimento di unione chiavi numeriche resilienti nell'aggregazione).
+
 ## Aggiornamento P0 — Completamento e consolidamento iniziale (27/10/2026)
 
 - Risolto blocco ambiente: installato `transformers>=4.44,<5` ed eseguito download iniziale del modello CLAP `laion/clap-htsat-unfused` su CPU.
