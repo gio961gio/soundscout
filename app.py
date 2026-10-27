@@ -10,7 +10,7 @@ from soundscout.audio import SUPPORTED_EXTENSIONS, waveform_minmax
 from soundscout.export import results_to_csv
 from soundscout.index import build_or_update_index, load_saved_index
 from soundscout.model import ClapEmbedder
-from soundscout.search import filter_results, rank_by_text
+from soundscout.search import filter_results, rank_by_audio_example, rank_by_text
 
 st.set_page_config(page_title="SoundScout", page_icon="🎧", layout="wide")
 
@@ -190,16 +190,41 @@ with tab_search:
             help="CLAP works best with concise descriptive prompts. English queries are a useful starting point.",
         )
     with col_btn:
-        st.button("Search sounds", type="primary", use_container_width=True)
+        search_clicked = st.button("Search sounds", type="primary", use_container_width=True)
 
     active_query = query_input.strip()
-    if not active_query:
-        st.caption("Tip: describe texture, distance, space, material and action — not just a broad category.")
+    sim_source = st.session_state.get("find_similar_source")
+
+    # If the user clicks search or types a new query, exit reverse audio search mode
+    if search_clicked and active_query:
+        st.session_state.pop("find_similar_source", None)
+        sim_source = None
+
+    if sim_source:
+        b_col, c_col = st.columns([5, 1])
+        with b_col:
+            st.info(f"🎯 **Reverse Audio Search:** Finding sounds timbrally similar to **{sim_source.get('name', 'selected audio')}**")
+        with c_col:
+            if st.button("✖ Clear", key="clear_find_similar", use_container_width=True):
+                del st.session_state["find_similar_source"]
+                st.rerun()
+
+    if not active_query and not sim_source:
+        st.caption("Tip: describe texture, distance, space, material and action — or click '🎯 Similar' on any sound.")
     else:
         try:
-            with st.spinner("Comparing your query with the indexed sounds…"):
-                embedder = get_embedder()
-                ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
+            if sim_source:
+                with st.spinner("Comparing acoustic timbre across library…"):
+                    ranked = rank_by_audio_example(sim_source, records, vectors, top_k=len(records), exclude_self=True)
+                active_label = f"similar to *{sim_source.get('name', 'audio')}*"
+                export_query_name = f"Similar to: {sim_source.get('name', '')}"
+            else:
+                with st.spinner("Comparing your query with the indexed sounds…"):
+                    embedder = get_embedder()
+                    ranked = rank_by_text(active_query, records, vectors, embedder, top_k=len(records))
+                active_label = f"*{active_query}*"
+                export_query_name = active_query
+
             filtered = filter_results(
                 ranked,
                 min_duration=float(duration_range[0]),
@@ -216,12 +241,12 @@ with tab_search:
 
         res_header_col, export_col = st.columns([3.5, 1.5])
         with res_header_col:
-            st.markdown(f"### Results for *{active_query}*")
+            st.markdown(f"### Results for {active_label}")
             st.caption(f"{len(filtered)} result(s) match the current filters. Similarity is a ranking score, not a probability.")
         with export_col:
             if filtered:
                 # Add current search query to results for export tracking
-                results_with_query = [dict(item, query=active_query) for item in filtered]
+                results_with_query = [dict(item, query=export_query_name) for item in filtered]
                 st.download_button(
                     "📥 Export Results (CSV)",
                     data=results_to_csv(results_with_query).encode("utf-8-sig"),
@@ -237,10 +262,14 @@ with tab_search:
                 path = str(item["path"])
                 title_col, score_col = st.columns([5, 1])
                 with title_col:
-                    t_col, fav_col = st.columns([4, 1.2])
+                    t_col, sim_btn_col, fav_col = st.columns([3.6, 1.2, 1.2])
                     with t_col:
                         st.markdown(f"#### {rank}. {item.get('name', Path(path).name)}")
                         st.caption(item.get("relative_path", path))
+                    with sim_btn_col:
+                        if st.button("🎯 Similar", key=f"sim-search-{rank}-{abs(hash(path))}", help="Find timbrally similar sounds in library"):
+                            st.session_state["find_similar_source"] = item
+                            st.rerun()
                     with fav_col:
                         is_fav = path in shortlist
                         if is_fav:
@@ -250,7 +279,7 @@ with tab_search:
                         else:
                             if st.button("☆ Add to Shortlist", key=f"fav-search-{rank}-{abs(hash(path))}", help="Add to session shortlist"):
                                 item_to_save = dict(item)
-                                item_to_save["query"] = active_query
+                                item_to_save["query"] = export_query_name
                                 shortlist[path] = item_to_save
                                 st.rerun()
                 with score_col:
@@ -312,9 +341,15 @@ with tab_shortlist:
         for s_idx, (s_path, s_item) in enumerate(list(shortlist.items()), start=1):
             s_title_col, s_score_col = st.columns([5, 1])
             with s_title_col:
-                st.markdown(f"#### {s_idx}. {s_item.get('name', Path(s_path).name)}")
-                query_info = f" · Prompt: *\"{s_item['query']}\"*" if s_item.get("query") else ""
-                st.caption(f"{s_item.get('relative_path', s_path)}{query_info}")
+                s_t_col, s_sim_col = st.columns([4, 1.2])
+                with s_t_col:
+                    st.markdown(f"#### {s_idx}. {s_item.get('name', Path(s_path).name)}")
+                    query_info = f" · Prompt: *\"{s_item['query']}\"*" if s_item.get("query") else ""
+                    st.caption(f"{s_item.get('relative_path', s_path)}{query_info}")
+                with s_sim_col:
+                    if st.button("🎯 Similar", key=f"sim-short-{s_idx}-{abs(hash(s_path))}", help="Find timbrally similar sounds in library"):
+                        st.session_state["find_similar_source"] = s_item
+                        st.rerun()
             with s_score_col:
                 if st.button("❌ Remove", key=f"del-short-{s_idx}-{abs(hash(s_path))}"):
                     del shortlist[s_path]

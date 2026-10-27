@@ -3,7 +3,12 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from soundscout.search import create_faiss_index, rank_by_text, search_faiss_index
+from soundscout.search import (
+    create_faiss_index,
+    rank_by_audio_example,
+    rank_by_text,
+    search_faiss_index,
+)
 
 
 class FakeEmbedder:
@@ -96,3 +101,42 @@ def test_faiss_index_creation_and_search() -> None:
     assert len(indices) == 3
     assert indices[0] == 5
     assert pytest.approx(scores[0], abs=1e-5) == 1.0
+
+
+def test_rank_by_audio_example_finds_similar_and_excludes_self() -> None:
+    rng = np.random.default_rng(999)
+    records = [
+        {
+            "name": f"sfx_{i}.wav",
+            "path": f"/samples/sfx_{i}.wav",
+            "segment_offset": i * 2,
+            "segment_count": 2,
+            "duration_seconds": 10.0,
+            "segments": [{"start_seconds": 0.0, "end_seconds": 5.0}, {"start_seconds": 5.0, "end_seconds": 10.0}],
+        }
+        for i in range(5)
+    ]
+    vectors = rng.standard_normal((10, 512)).astype(np.float32)
+    vectors /= np.linalg.norm(vectors, axis=1, keepdims=True)
+
+    # Make file 3 almost identical to file 1's first segment
+    vectors[6] = vectors[2].copy()
+
+    source = records[1]
+    similar = rank_by_audio_example(source, records, vectors, top_k=3, exclude_self=True)
+
+    assert len(similar) == 3
+    # Self (sfx_1.wav) must be excluded
+    assert all(r["name"] != "sfx_1.wav" for r in similar)
+    # Most similar should be sfx_3.wav with similarity ~ 1.0
+    assert similar[0]["name"] == "sfx_3.wav"
+    assert pytest.approx(similar[0]["similarity"], abs=1e-5) == 1.0
+
+
+def test_rank_by_audio_example_edge_cases() -> None:
+    assert rank_by_audio_example({}, [{"name": "a.wav"}], np.ones((1, 512))) == []
+    assert rank_by_audio_example({"name": "a.wav"}, [], np.ones((1, 512))) == []
+    assert rank_by_audio_example({"name": "a.wav"}, [{"name": "a.wav"}], np.array([])) == []
+    assert rank_by_audio_example({"name": "a.wav"}, [{"name": "a.wav"}], np.ones((1, 512)), top_k=0) == []
+    assert rank_by_audio_example({"name": "a.wav"}, [{"name": "a.wav"}], np.ones((1, 512)), top_k=-2) == []
+
