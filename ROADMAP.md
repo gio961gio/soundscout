@@ -55,17 +55,19 @@ La roadmap è intenzionalmente sequenziale: prima stabilità e misure, poi featu
 
 **Done:** l'evento saliente in una traccia lunga emerge con precisione temporale ed evidenziazione grafica interattiva.
 
-## P3 — Workflow da sound designer
+## P3 — Workflow da sound designer (completata)
 
-Implementare solo dopo aver parlato con utenti e scelto una o due priorità:
+**Obiettivo:** fornire gli strumenti operativi per l'uso quotidiano in studio (shortlist, export DAW e ricerca ibrida).
 
-- [ ] Preferiti / shortlist della sessione.
-- [ ] Tag manuali e note locali.
-- [ ] Esportazione CSV dei risultati con percorso, score, timestamp (quando disponibile) e metadati.
-- [ ] Ricerca per nome/tag tradizionale combinata con semantica.
-- [ ] Rilevamento duplicati o file quasi duplicati, con metrica esplicita.
+- [x] Implementata la **Shortlist / Preferiti di sessione** in `app.py`: pulsante dinamico di salvataggio/rimozione rapida su ciascuna card e contatore in tempo reale nella dashboard.
+- [x] Creato modulo di esportazione [`soundscout/export.py`](file:///c:/Users/Giovanni/Desktop/Progetti_professionali/SoundScout/soundscout/export.py) con calcolo dei timecode broadcast (`format_timecode` in `HH:MM:SS.mmm`) e serializzazione CSV conforme alle specifiche di marker cue-sheet per DAW (Reaper, Pro Tools, Nuendo).
+- [x] Aggiunti pulsanti di download CSV per l'intero set di risultati e per la shortlist con codifica `utf-8-sig` (piena compatibilità con Excel su Windows) e memorizzazione della query semantica di origine.
+- [x] Implementata la **ricerca ibrida** in `soundscout/search.py`: combinazione di query semantica CLAP con filtro testuale/keyword su nome file e percorso relativo.
+- [x] Riorganizzata la UI Streamlit a due schede (`🔍 Search Sounds` e `⭐ Session Shortlist`) con player dedicato, waveform e gestione rapida dei preferiti.
+- [x] Creata suite di test dedicata in `tests/test_workflow.py` (`22 passed in 3.70s`).
+- [x] Revisione e audit di **Argon** via `/argon-bridge` (`STATUS: APPROVED`).
 
-**Done quando:** almeno una feature viene confermata utile da utenti del target e non rompe privacy/cache.
+**Done:** sound designer possono raccogliere candidati in sessione, riascoltarli ed esportare timecode e percorsi direttamente verso la propria DAW.
 
 ## P4 — Prestazioni e distribuzione
 

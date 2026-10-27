@@ -10,6 +10,15 @@
 - Test per segmentazione, filtri, ranking e riuso embedding.
 - Documentazione per installazione, architettura e limiti.
 
+## Aggiornamento P3 — Workflow Sound Designer & Esportazione DAW (27/10/2026)
+
+- Shortlist & Preferiti: introdotta gestione dinamica dei campioni selezionati in sessione con memorizzazione della query di ricerca e tab dedicata in `app.py`.
+- Esportazione DAW / CSV: creato modulo `soundscout/export.py` con `results_to_csv` e formattazione timecode broadcast `HH:MM:SS.mmm` (`format_timecode`).
+- Download con codifica `utf-8-sig`: garantita compatibilità immediata con Microsoft Excel su Windows.
+- Ricerca ibrida: aggiunto parametro `keyword` in `soundscout/search.py` (`filter_results`) per combinare embedding semantico e filtro testuale su nome e percorso.
+- Test unitari: creati 4 nuovi test in `tests/test_workflow.py` (`22 passed in 3.70s`).
+- Revisione tecnica con Argon via `/argon-bridge`: approvata (`STATUS: APPROVED`).
+
 ## Aggiornamento P2 — Ricerca a Livello di Segmento e Timestamp (27/10/2026)
 
 - Architettura audio temporale: creata dataclass `TimedSegment` e funzione `audio_segments_timed` in `soundscout/audio.py` con hop da 5s su finestre da 10s.
