@@ -71,9 +71,10 @@ def show_waveform(path: str, key: str) -> None:
 with st.sidebar:
     st.markdown("# 🎧 SoundScout")
     st.caption("Search your local sound library with natural language.")
+    default_dir = Path("demo_audio").resolve() if Path("demo_audio").exists() else Path.home() / "Music" / "Samples"
     library_path = st.text_input(
         "Library folder",
-        value=str(Path.home() / "Music" / "Samples"),
+        value=str(default_dir),
         help="Path on the computer running this app. Subfolders are indexed recursively.",
     )
     st.caption("Supported: WAV, FLAC, OGG, AIFF. MP3 may require FFmpeg.")
